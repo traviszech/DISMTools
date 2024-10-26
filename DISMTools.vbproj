@@ -80,8 +80,8 @@
     <Reference Include="Microsoft.Dism, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5bba90053b345501, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Dism.3.1.0\lib\net40\Microsoft.Dism.dll</HintPath>
     </Reference>
-    <Reference Include="Scintilla.NET, Version=5.6.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Scintilla5.NET.5.6.1\lib\net462\Scintilla.NET.dll</HintPath>
+    <Reference Include="Scintilla.NET, Version=5.6.2.0, Culture=neutral, PublicKeyToken=0221e70ba618311e, processorArchitecture=MSIL">
+      <HintPath>packages\Scintilla5.NET.5.6.2\lib\net462\Scintilla.NET.dll</HintPath>
     </Reference>
     <Reference Include="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -1322,10 +1322,19 @@
     <Content Include="Helpers\extps1\PE_Helper\backgrounds\winpe_x86.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Helpers\extps1\PE_Helper\files\README1ST.TXT">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Helpers\extps1\PE_Helper\tools\DIM\amd64\DT-DIM.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Helpers\extps1\PE_Helper\tools\DIM\i386\DT-DIM.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Helpers\extps1\PE_Helper\tools\RestartDialog\amd64\DTPE-RestartDialog.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Helpers\extps1\PE_Helper\tools\RestartDialog\i386\DTPE-RestartDialog.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Installer\dt.iss" />
@@ -1742,6 +1751,9 @@ ECHO Generating program structure...
 IF EXIST "$(SolutionDir)portable" (
 	COPY "$(SolutionDir)portable" . /Y
 )
+IF EXIST "$(SolutionDir)Helpers\extps1\PE_Helper\Compile.ps1" (
+	"\Windows\system32\WindowsPowerShell\v1.0\powershell.exe" -executionpolicy bypass -noprofile -nologo -file "$(SolutionDir)Helpers\extps1\PE_Helper\Compile.ps1"
+)
 IF NOT EXIST bin (
 	md "bin"
 	md "bin\exthelpers"
@@ -1753,6 +1765,15 @@ IF NOT EXIST bin (
 	move "helpers\extps1\*.*" "bin\extps1"
 	md "bin\extps1\PE_Helper"
 	xcopy "helpers\extps1\PE_Helper\*.*" "bin\extps1\PE_Helper" /cehyi
+	IF EXIST "$(SolutionDir)helpers\extps1\PE_Helper\Compile.ps1" (
+		:: Compile the script with CTT's compilation script (license in source code and About section)
+		ECHO Invoking pre-processing...
+		COPY "$(SolutionDir)helpers\extps1\PE_Helper\Compile.ps1" "$(TargetDir)bin\extps1\PE_Helper\Compile.ps1"
+		COPY "$(SolutionDir)helpers\extps1\PE_Helper\tools\Invoke-Preprocessing.ps1" "$(TargetDir)bin\extps1\PE_Helper\tools\Invoke-Preprocessing.ps1"
+		"\Windows\system32\WindowsPowerShell\v1.0\powershell.exe" -executionpolicy bypass -noprofile -nologo -file "$(TargetDir)bin\extps1\PE_Helper\Compile.ps1"
+		DEL "$(TargetDir)bin\extps1\PE_Helper\Compile.ps1" /F /Q
+		DEL "$(TargetDir)bin\extps1\PE_Helper\tools\Invoke-Preprocessing.ps1" /F /Q
+	)
 	IF EXIST HELPERS (
 		rd HELPERS /s /q
 	)
@@ -1860,12 +1881,12 @@ IF EXIST tools (
 	rd tools /s /q
 )</PreBuildEvent>
   </PropertyGroup>
-  <Import Project="packages\Scintilla5.NET.5.6.1\build\scintilla5.net.targets" Condition="Exists('packages\Scintilla5.NET.5.6.1\build\scintilla5.net.targets')" />
+  <Import Project="packages\Scintilla5.NET.5.6.2\build\scintilla5.net.targets" Condition="Exists('packages\Scintilla5.NET.5.6.2\build\scintilla5.net.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\Scintilla5.NET.5.6.1\build\scintilla5.net.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Scintilla5.NET.5.6.1\build\scintilla5.net.targets'))" />
+    <Error Condition="!Exists('packages\Scintilla5.NET.5.6.2\build\scintilla5.net.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Scintilla5.NET.5.6.2\build\scintilla5.net.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

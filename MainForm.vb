@@ -538,6 +538,20 @@ Public Class MainForm
             MsgBox("This program is incompatible with Windows 7 and Server 2008 R2." & CrLf & "This program uses the DISM API, which requires files from the Assessment and Deployment Kit (ADK). However, support for Windows 7 is not included." & CrLf & CrLf & "The program will be closed.", vbOKOnly + vbCritical, "DISMTools")
             Environment.Exit(1)
         End If
+        ' Detect .NET Framework version, as the program somehow runs without it
+        Try
+            Dim NDPCheckerReg As RegistryKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full")
+            Dim NDPReleaseInt As Integer = NDPCheckerReg.GetValue("Release")
+            NDPCheckerReg.Close()
+            ' Detect .NET Framework 4.8
+            If NDPReleaseInt < 528040 Then
+                SplashScreen.Hide()
+                MsgBox("This program requires .NET Framework 4.8 to function." & CrLf & "You can download it from: dotnet.microsoft.com. Install the framework and run the program again. You may need to restart your system" & CrLf & CrLf & "The program will be closed.", vbOKOnly + vbCritical, "DISMTools")
+                Environment.Exit(1)
+            End If
+        Catch ex As Exception
+
+        End Try
         If Not Directory.Exists(Application.StartupPath & "\logs") Then Directory.CreateDirectory(Application.StartupPath & "\logs")
         If Not Debugger.IsAttached Then SplashScreen.Show()
         Thread.Sleep(2000)
@@ -592,7 +606,7 @@ Public Class MainForm
         Else
             UpdatePanel.Visible = False
         End If
-        MountedImageDetectorBW.RunWorkerAsync()
+        If Not MountedImageDetectorBW.IsBusy Then MountedImageDetectorBW.RunWorkerAsync()
         WatcherTimer.Enabled = True
         If dtBranch.Contains("preview") And Not Debugger.IsAttached Then
             VersionTSMI.Visible = True
@@ -19704,5 +19718,23 @@ Public Class MainForm
                 ListView2.Items.Add(listItem)
             Next
         End If
+    End Sub
+
+    Sub RestartDetector()
+        Try
+            If Not MountedImageDetectorBW.IsBusy Then
+                Call MountedImageDetectorBW.RunWorkerAsync()
+            Else
+                Exit Sub
+            End If
+            Debug.WriteLine("Mounted Image Detector Restart Successful")
+            MountedImageDetectorBWRestarterTimer.Enabled = False
+        Catch ex As Exception
+            Debug.WriteLine("Mounted Image Detector Restart Not Successful")
+        End Try
+    End Sub
+
+    Private Sub MountedImageDetectorBWRestarterTimer_Tick(sender As Object, e As EventArgs) Handles MountedImageDetectorBWRestarterTimer.Tick
+        RestartDetector()
     End Sub
 End Class
