@@ -12,6 +12,7 @@ on:
   workflow_dispatch:
 env:
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build-runspace:
@@ -33,8 +34,35 @@ jobs:
         msbuild Tools\UnpEax\UnpEax.csproj /p:Configuration=Debug /p:DeployOnBuild=true
         msbuild DISMTools.vbproj /p:Configuration=Debug /p:DeployOnBuild=true /p:SolutionDir=$solutionDir /p:ProjectDir=$projectDir /p:TargetDir=$targetDir
         Move-Item -Path "$($solutionDir.TrimEnd("\"))\Installer\Output\dt_setup.exe" -Destination "$($solutionDir.TrimEnd("\"))\Installer\Nightly\dt_setup.exe" -Force
-    - name: Push nightly installer
-      uses: stefanzweifel/git-auto-commit-action@v5
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
       with:
-        commit_message: DISMTools Nightly Installer
-      if: success()
+        name: build-result
+        path: ${{ github.workspace }}\Installer\Nightly\dt_setup.exe
+  upload-installer:
+    runs-on: ubuntu-latest
+    needs: build-runspace
+    steps:
+      - uses: actions/checkout@v4
+      - name: Grab Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-result
+          path: ./downloaded_artifacts
+      - name: Prepare directory
+        run: |
+          mkdir "./${{ GITHUB.REF_NAME }}"
+          mv -f "./downloaded_artifacts/dt_setup.exe" "./${{ GITHUB.REF_NAME }}/dt_setup.exe"
+          rm -rf "./downloaded_artifacts"
+      - name: Upload Installer
+        env:
+          SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        uses: cpina/github-action-push-to-another-repository@main
+        with:
+          source-directory: '${{ GITHUB.REF_NAME }}'
+          destination-github-username: 'CodingWonders'
+          destination-repository-name: 'dt-nightly-installers'
+          user-email: '101426328+CodingWonders@users.noreply.github.com'
+          target-directory: '${{ GITHUB.REF_NAME }}'
+          target-branch: main
