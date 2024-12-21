@@ -5192,10 +5192,41 @@ Public Class ProgressPanel
                 End Try
             End If
         ElseIf opNum = 79 Then
-            ' Translations will not be available for 0.5.1
-
-            allTasks.Text = "Applying unattended answer file..."
-            currentTask.Text = "Applying specified unattended answer file to the target image..."
+            Select Case Language
+                Case 0
+                    Select Case My.Computer.Info.InstalledUICulture.ThreeLetterWindowsLanguageName
+                        Case "ENU", "ENG"
+                            allTasks.Text = "Applying unattended answer file..."
+                            currentTask.Text = "Applying specified unattended answer file to the target image..."
+                        Case "ESN"
+                            allTasks.Text = "Aplicando archivo de respuesta desatendida..."
+                            currentTask.Text = "Aplicando archivo de respuesta desatendida especificado a la imagen de destino..."
+                        Case "FRA"
+                            allTasks.Text = "Appliquer le fichier de réponse sans surveillance en cours..."
+                            currentTask.Text = "Appliquer le fichier de réponse non assisté spécifié à l'image cible en cours..."
+                        Case "PTB", "PTG"
+                            allTasks.Text = "Aplicar ficheiro de resposta não assistido..."
+                            currentTask.Text = "Aplicar o ficheiro de resposta automática especificado à imagem de destino..."
+                        Case "ITA"
+                            allTasks.Text = "Applicazione del file di risposta non presidiato..."
+                            currentTask.Text = "Applicazione del file di risposta non presidiato specificato all'immagine di destinazione..."
+                    End Select
+                Case 1
+                    allTasks.Text = "Applying unattended answer file..."
+                    currentTask.Text = "Applying specified unattended answer file to the target image..."
+                Case 2
+                    allTasks.Text = "Aplicando archivo de respuesta desatendida..."
+                    currentTask.Text = "Aplicando archivo de respuesta desatendida especificado a la imagen de destino..."
+                Case 3
+                    allTasks.Text = "Appliquer le fichier de réponse sans surveillance en cours..."
+                    currentTask.Text = "Appliquer le fichier de réponse non assisté spécifié à l'image cible en cours..."
+                Case 4
+                    allTasks.Text = "Aplicar ficheiro de resposta não assistido..."
+                    currentTask.Text = "Aplicar o ficheiro de resposta automática especificado à imagem de destino..."
+                Case 5
+                    allTasks.Text = "Applicazione del file di risposta non presidiato..."
+                    currentTask.Text = "Applicazione del file di risposta non presidiato specificato all'immagine di destinazione..."
+            End Select
             LogView.AppendText(CrLf & "Applying unattended answer file. Options:" & CrLf & _
                                "- Unattended answer file: " & UnattendedFile)
 
@@ -6796,7 +6827,20 @@ Public Class ProgressPanel
             End If
         End If
         taskCountLbl.Visible = True
-        ProgressBW.RunWorkerAsync()
+        If RegistryControlPanel.Visible Then
+            RegistryControlPanel.Close()
+            If RegistryControlPanel.Visible Then
+                LogView.AppendText(CrLf & "The image registry hives need to be unloaded before continuing to perform the task.")
+            End If
+        End If
+        If Not RegistryControlPanel.Visible Then
+            ProgressBW.RunWorkerAsync()
+        Else
+            Visible = True
+            Application.DoEvents()
+            Thread.Sleep(2000)
+            Close()
+        End If
     End Sub
 
 #Region "Actions"
@@ -6925,5 +6969,35 @@ Public Class ProgressPanel
 
     Private Sub ProgressPanel_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If ValidationForm.Visible Then ValidationForm.Close()
+        Select Case MainForm.Language
+            Case 0
+                Select Case My.Computer.Info.InstalledUICulture.ThreeLetterWindowsLanguageName
+                    Case "ENU", "ENG"
+                        MainForm.MenuDesc.Text = "Ready"
+                    Case "ESN"
+                        MainForm.MenuDesc.Text = "Listo"
+                    Case "FRA"
+                        MainForm.MenuDesc.Text = "Prêt"
+                    Case "PTB", "PTG"
+                        MainForm.MenuDesc.Text = "Pronto"
+                    Case "ITA"
+                        MainForm.MenuDesc.Text = "Pronto"
+                End Select
+            Case 1
+                MainForm.MenuDesc.Text = "Ready"
+            Case 2
+                MainForm.MenuDesc.Text = "Listo"
+            Case 3
+                MainForm.MenuDesc.Text = "Prêt"
+            Case 4
+                MainForm.MenuDesc.Text = "Pronto"
+            Case 5
+                MainForm.MenuDesc.Text = "Pronto"
+        End Select
+        ActionRunning = False
+        MainForm.StatusStrip.BackColor = If(MainForm.ColorSchemes = 0, Color.FromArgb(53, 153, 41), Color.FromArgb(0, 122, 204))
+        MainForm.ToolStripButton4.Visible = False
+        If Not MainForm.MountedImageDetectorBW.IsBusy Then Call MainForm.MountedImageDetectorBW.RunWorkerAsync()
+        MainForm.WatcherTimer.Enabled = True
     End Sub
 End Class

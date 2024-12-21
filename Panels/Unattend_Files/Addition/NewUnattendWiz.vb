@@ -16,7 +16,7 @@ Public Class NewUnattendWiz
 
     Dim DotNetRuntimeSupported As Boolean
     Dim PreferSelfContained As Boolean
-    Dim UnattendGenReleaseTag As String = "24112"
+    Dim UnattendGenReleaseTag As String = "24122"
 
     ' Regional Settings Page
     Dim ImageLanguages As New List(Of ImageLanguage)
@@ -50,6 +50,7 @@ Public Class NewUnattendWiz
 
     ' User Accounts Panel
     Dim UserAccountsInteractive As Boolean = True
+    Dim MicrosoftAccountInteractive As Boolean
     Dim UserAccountsList As New List(Of User)
     Dim AutoLogon As New AutoLogonSettings()
     Dim PasswordObfuscate As Boolean
@@ -69,6 +70,10 @@ Public Class NewUnattendWiz
     Dim SystemTelemetryInteractive As Boolean
     Dim SelectedTelemetrySettings As New SystemTelemetry()
 
+    ' Component Panel
+    Dim SystemComponents As New List(Of Component)
+    Dim FinalComponents As New List(Of Component)
+
     ' Space for more pages
 
     ' Default Settings
@@ -82,6 +87,7 @@ Public Class NewUnattendWiz
     Dim DefaultLockdownSettings As New AccountLockdownSettings()
     Dim DefaultVMSettings As New VirtualMachineSettings()
     Dim DefaultNetworkConfiguration As New WirelessSettings()
+    Dim DefaultSystemComponents As New List(Of Component)
 
     ' Progress info
     Dim ProgressMessage As String = ""
@@ -310,6 +316,7 @@ Public Class NewUnattendWiz
         GenericKeys.Add(NewKeyVar("DXG7C-N36C4-C4HTG-X4T3X-2YV77"))     ' Pro for Workstations
         GenericKeys.Add(NewKeyVar("2B87N-8KFHP-DKV6R-Y2C8J-PKCKT"))     ' Pro N
         GenericKeys.Add(NewKeyVar("WYPNQ-8C467-V2W6J-TX4WX-WT2RQ"))     ' Pro N for Workstations
+        GenericKeys.Add(NewKeyVar("XGVPP-NMH47-7TTHJ-W3FW7-8HV2C"))     ' Enterprise
 
         UserAccountsList.Add(New User(True, "Admin", "", UserGroup.Administrators))
         For i = 1 To 4
@@ -395,6 +402,7 @@ Public Class NewUnattendWiz
         ComboBox12.BackColor = BackColor
         ComboBox13.BackColor = BackColor
         ListBox1.BackColor = BackColor
+        ListBox2.BackColor = BackColor
         TextBox1.BackColor = BackColor
         TextBox2.BackColor = BackColor
         TextBox3.BackColor = BackColor
@@ -435,6 +443,7 @@ Public Class NewUnattendWiz
         ComboBox12.ForeColor = ForeColor
         ComboBox13.ForeColor = ForeColor
         ListBox1.ForeColor = ForeColor
+        ListBox2.ForeColor = ForeColor
         TextBox1.ForeColor = ForeColor
         TextBox2.ForeColor = ForeColor
         TextBox3.ForeColor = ForeColor
@@ -531,6 +540,16 @@ Public Class NewUnattendWiz
                 If ComboBox5.SelectedItem = Nothing Then ComboBox5.SelectedItem = DefaultOffset.DisplayName
             End If
         End If
+        ' System components
+        If File.Exists(Application.StartupPath & "\AutoUnattend\Component.xml") Then
+            SystemComponents = Component.LoadItems(Application.StartupPath & "\AutoUnattend\Component.xml")
+            DefaultSystemComponents = Component.LoadItems(Application.StartupPath & "\AutoUnattend\Component.xml")
+            If SystemComponents IsNot Nothing Then
+                For Each SystemComponent As Component In SystemComponents
+                    ListBox2.Items.Add(SystemComponent.Id)
+                Next
+            End If
+        End If
         ListBox1.SelectedIndex = 1
         ChangePage(UnattendedWizardPage.Page.WelcomePage)
         VerifyInPages.AddRange(New UnattendedWizardPage.Page() {UnattendedWizardPage.Page.SysConfigPage, UnattendedWizardPage.Page.DiskConfigPage, UnattendedWizardPage.Page.ProductKeyPage, UnattendedWizardPage.Page.UserAccountsPage, UnattendedWizardPage.Page.NetworkConnectionsPage})
@@ -543,9 +562,9 @@ Public Class NewUnattendWiz
         If ComboBox13.SelectedItem = Nothing Then ComboBox13.SelectedItem = "WPA2-PSK"
 
         ' Detect .NET runtimes/SDKs
-        DetectDotNetRuntime("8.0.303", "8.0")
+        DetectDotNetRuntime("9.0.100", "9.0")
         If Not DotNetRuntimeSupported Then
-            If MsgBox("This wizard requires the .NET 8 Runtime to be installed to use the built-in version of the generator program. You can download it from:" & CrLf & CrLf & "dotnet.microsoft.com" & CrLf & CrLf & "If you don't want to download .NET, you can download the self-contained version of the generator program. Downloading it will take some time, depending on your network connection speed." & CrLf & CrLf & "Do you want to use the self-contained version?", vbYesNo + vbQuestion, ".NET Runtime missing") = Windows.Forms.DialogResult.Yes Then
+            If MsgBox("This wizard requires the .NET 9 Runtime to be installed to use the built-in version of the generator program. You can download it from:" & CrLf & CrLf & "dotnet.microsoft.com" & CrLf & CrLf & "If you don't want to download .NET, you can download the self-contained version of the generator program. Downloading it will take some time, depending on your network connection speed." & CrLf & CrLf & "Do you want to use the self-contained version?", vbYesNo + vbQuestion, ".NET Runtime missing") = Windows.Forms.DialogResult.Yes Then
                 ExpressPanelFooter.Enabled = False
                 UnattendGenBW.RunWorkerAsync()
             Else
@@ -562,6 +581,97 @@ Public Class NewUnattendWiz
         Else
             LinkLabel6.Enabled = False
         End If
+    End Sub
+
+    Sub ReloadSettings()
+        ' Restore regional configuration
+        ComboBox1.SelectedItem = DefaultLanguage.DisplayName
+        ComboBox2.SelectedItem = DefaultLocale.DisplayName
+        ComboBox3.SelectedItem = DefaultKeybIdentifier.DisplayName
+        ComboBox4.SelectedItem = DefaultGeoId.DisplayName
+        ' Restore basic system configuration
+        ListBox1.SelectedIndex = 1
+        Win11Config.LabConfig_BypassRequirements = False
+        Win11Config.OOBE_BypassNRO = False
+        CheckBox1.Checked = False
+        CheckBox2.Checked = False
+        CheckBox3.Checked = True
+        TextBox1.Text = ""
+        ' Restore time zone
+        ComboBox5.SelectedItem = DefaultOffset.DisplayName
+        RadioButton1.Checked = True
+        ' Restore disk configuration
+        CheckBox4.Checked = True
+        RadioButton5.Checked = True
+        RadioButton7.Checked = True
+        NumericUpDown1.Value = 300
+        CheckBox5.Checked = True
+        RadioButton9.Checked = True
+        NumericUpDown2.Value = 1000
+        Scintilla2.Text = My.Resources.DefaultDiskPartConfig
+        RadioButton11.Checked = True
+        NumericUpDown3.Value = 0
+        NumericUpDown4.Value = 3
+        SelectedDiskConfiguration = DefaultDiskConfiguration
+        ' Restore product key
+        RadioButton13.Checked = True
+        ComboBox6.SelectedItem = "Pro"
+        TextBox3.Text = ""
+        ' Restore user accounts
+        CheckBox6.Checked = True
+        TextBox4.Text = "Admin"
+        TextBox6.Text = ""
+        TextBox8.Text = ""
+        TextBox9.Text = ""
+        TextBox11.Text = ""
+        TextBox12.Text = ""
+        TextBox14.Text = ""
+        TextBox15.Text = ""
+        TextBox17.Text = ""
+        TextBox18.Text = ""
+        CheckBox8.Checked = False
+        CheckBox9.Checked = False
+        CheckBox10.Checked = False
+        CheckBox11.Checked = False
+        ComboBox7.SelectedIndex = 0
+        ComboBox9.SelectedIndex = 1
+        ComboBox10.SelectedIndex = 1
+        ComboBox11.SelectedIndex = 1
+        ComboBox12.SelectedIndex = 1
+        CheckBox12.Checked = False
+        RadioButton15.Checked = True
+        TextBox5.Text = ""
+        CheckBox7.Checked = True
+        CheckBox18.Checked = False
+        ' Restore password expiration
+        RadioButton17.Checked = True
+        RadioButton19.Checked = True
+        NumericUpDown5.Value = 10
+        ' Restore Account lockout
+        CheckBox13.Checked = False
+        RadioButton21.Checked = True
+        NumericUpDown6.Value = 10
+        NumericUpDown7.Value = 10
+        NumericUpDown8.Value = 10
+        ' Restore VM support
+        ComboBox8.SelectedIndex = 2
+        RadioButton24.Checked = True
+        ' Restore network settings
+        CheckBox14.Checked = True
+        RadioButton25.Checked = True
+        TextBox7.Text = ""
+        CheckBox15.Checked = False
+        ComboBox13.SelectedIndex = 1
+        TextBox10.Text = ""
+        ' Restore system telemetry
+        CheckBox16.Checked = False
+        RadioButton26.Checked = True
+        ' Restore default selections for components
+        SystemComponents = DefaultSystemComponents
+
+        ' Restore variables
+        UserAccountsList.Clear()
+        SetDefaultSettings()
     End Sub
 
     Sub SelectTreeNode(NodeIndex As Integer)
@@ -583,7 +693,7 @@ Public Class NewUnattendWiz
         ProductKeyPanel.Visible = (NewPage = UnattendedWizardPage.Page.ProductKeyPage)
         UserAccountPanel.Visible = (NewPage = UnattendedWizardPage.Page.UserAccountsPage)
         PWExpirationPanel.Visible = (NewPage = UnattendedWizardPage.Page.PWExpirationPage)
-        AccountLockdownPanel.Visible = (NewPage = UnattendedWizardPage.Page.AccountLockdownPage)
+        AccountLockoutPanel.Visible = (NewPage = UnattendedWizardPage.Page.AccountLockoutPage)
         VirtualMachinePanel.Visible = (NewPage = UnattendedWizardPage.Page.VirtualMachinePage)
         NetworkConnectionPanel.Visible = (NewPage = UnattendedWizardPage.Page.NetworkConnectionsPage)
         SystemTelemetryPanel.Visible = (NewPage = UnattendedWizardPage.Page.SystemTelemetryPage)
@@ -613,7 +723,7 @@ Public Class NewUnattendWiz
                 SelectTreeNode(4)
             Case UnattendedWizardPage.Page.ProductKeyPage
                 SelectTreeNode(5)
-            Case UnattendedWizardPage.Page.UserAccountsPage, UnattendedWizardPage.Page.PWExpirationPage, UnattendedWizardPage.Page.AccountLockdownPage
+            Case UnattendedWizardPage.Page.UserAccountsPage, UnattendedWizardPage.Page.PWExpirationPage, UnattendedWizardPage.Page.AccountLockoutPage
                 SelectTreeNode(6)
             Case UnattendedWizardPage.Page.VirtualMachinePage
                 SelectTreeNode(7)
@@ -633,6 +743,7 @@ Public Class NewUnattendWiz
         AutoDiskConfigPanel.Width = ManualPartPanel.Width - (AutoDiskConfigPanel.Margin.Left * 2) - 4
         DiskPartPanel.Width = ManualPartPanel.Width - (DiskPartPanel.Margin.Left * 2) - 4
         GroupBox1.Width = ManualAccountPanel.Width - (GroupBox1.Margin.Left * 2) - 4
+        AccountsPanel.Width = UserAccountListing.Width
         UserAccountListing.Width = ManualAccountPanel.Width - (UserAccountListing.Margin.Left * 2) - 4
         WirelessNetworkSettingsPanel.Width = ManualNetworkConfigPanel.Width - (WirelessNetworkSettingsPanel.Margin.Left * 2) - 4
 
@@ -688,9 +799,27 @@ Public Class NewUnattendWiz
                     End If
                 End If
             Case UnattendedWizardPage.Page.UserAccountsPage
-                If Not UserAccountsInteractive AndAlso Not UserValidator.ValidateUsers(UserAccountsList) Then
-                    MessageBox.Show("There is a problem with one or more of the users specified. Make sure that all user name fields are filled, or make sure no user uses the Administrator name, and try again", "User Accounts error")
+                Dim validationResults As UserValidationResults = UserValidator.ValidateUsers(UserAccountsList, PCName)
+                If Not UserAccountsInteractive AndAlso Not MicrosoftAccountInteractive AndAlso Not validationResults.IsValid Then
+                    MessageBox.Show("There is a problem with one or more of the users specified. Here are the reasons why:" & CrLf & CrLf & validationResults.ValidationErrorReason & CrLf & CrLf & "Try again after fixing the aforementioned problems", "User Accounts error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     Return False
+                End If
+                Dim invalidChars As Char() = {"/", "\", "[", "]", ":", ";", "|", "=", ",", "+", "*", "?", "<", ">"}
+                If Not UserAccountsInteractive AndAlso Not MicrosoftAccountInteractive Then
+                    Dim AtLeastOneAdmin As Boolean = False
+                    If UserAccountsList.Count > 0 Then
+                        For Each UserAccount As User In UserAccountsList
+                            UserAccount.Name = New String(UserAccount.Name.Where(Function(c) Not invalidChars.Contains(c)).ToArray())
+                            If UserAccount.Group = UserGroup.Administrators Then
+                                AtLeastOneAdmin = True
+                                Exit For
+                            End If
+                        Next
+                    End If
+                    If Not AtLeastOneAdmin Then
+                        MessageBox.Show("At least one account must be part of the Administrators user group. Please configure the user groups accordingly and try again", "User Accounts error")
+                        Return False
+                    End If
                 End If
             Case UnattendedWizardPage.Page.NetworkConnectionsPage
                 If Not NetworkConfigInteractive AndAlso Not NetworkConfigManualSkip AndAlso Not WirelessValidator.ValidateWiFi(SelectedNetworkConfiguration) Then
@@ -754,7 +883,7 @@ Public Class NewUnattendWiz
                              "- Key: " & SelectedKey.Key & CrLf)
         ' 6. -- USER ACCOUNTS
         TextBox13.AppendText("User account settings: " & If(UserAccountsInteractive, "configured during setup" & CrLf, CrLf))
-        If Not UserAccountsInteractive Then
+        If Not UserAccountsInteractive And Not MicrosoftAccountInteractive Then
             For Each UserAccount As User In UserAccountsList
                 TextBox13.AppendText("- Account " & UserAccountsList.IndexOf(UserAccount) + 1 & "? " & If(UserAccount.Enabled, "Yes", "No") & CrLf)
                 If UserAccount.Enabled Then
@@ -772,6 +901,8 @@ Public Class NewUnattendWiz
                 End If
             End If
             TextBox13.AppendText("- Obscure passwords with Base64? " & If(PasswordObfuscate, "Yes", "No") & CrLf)
+        ElseIf (Not UserAccountsInteractive) And MicrosoftAccountInteractive Then
+            TextBox13.AppendText("- The target system will ask for a Microsoft account" & CrLf)
         End If
         TextBox13.AppendText("Password expiration policy: " & If(SelectedExpirationSettings.Mode = PasswordExpirationMode.NIST_Limited, "enabled" & CrLf, "disabled" & CrLf))
         If SelectedExpirationSettings.Mode = PasswordExpirationMode.NIST_Limited Then
@@ -780,9 +911,9 @@ Public Class NewUnattendWiz
                 TextBox13.AppendText("    - Expiration period: " & SelectedExpirationSettings.Days & " days" & CrLf)
             End If
         End If
-        TextBox13.AppendText("Account Lockdown policy status: " & If(SelectedLockdownSettings.Enabled, "enabled" & CrLf, "disabled" & CrLf))
+        TextBox13.AppendText("Account Lockout policy status: " & If(SelectedLockdownSettings.Enabled, "enabled" & CrLf, "disabled" & CrLf))
         If SelectedLockdownSettings.Enabled Then
-            TextBox13.AppendText("- Account Lockdown policies: " & If(SelectedLockdownSettings.DefaultPolicy, "default", "custom") & CrLf)
+            TextBox13.AppendText("- Account Lockout policies: " & If(SelectedLockdownSettings.DefaultPolicy, "default", "custom") & CrLf)
             If Not SelectedLockdownSettings.DefaultPolicy Then
                 TextBox13.AppendText("    - After " & SelectedLockdownSettings.TimedLockdownSettings.FailedAttempts & " failed attempts within " & SelectedLockdownSettings.TimedLockdownSettings.Timeframe & " minutes, unlock account after " & SelectedLockdownSettings.TimedLockdownSettings.AutoUnlockTime & " minutes" & CrLf)
             End If
@@ -823,6 +954,22 @@ Public Class NewUnattendWiz
             TextBox13.AppendText("- (Attempt to) disable telemetry? " & If(Not SelectedTelemetrySettings.Enabled, "Yes", "No") & CrLf)
         End If
         ' Post Install Scripts and Component Manager will be added in a future release
+        ' 11. -- COMPONENTS
+        TextBox13.AppendText("Additional components: " & If(Not AreComponentListsEqual(SystemComponents, DefaultSystemComponents), "", "none") & CrLf)
+        If Not AreComponentListsEqual(SystemComponents, DefaultSystemComponents) Then
+            FinalComponents = GetComponentDifferences(SystemComponents, DefaultSystemComponents)
+            If FinalComponents.Count > 0 Then
+                For Each systemComponent As Component In FinalComponents
+                    TextBox13.AppendText("- Component name: " & Quote & systemComponent.Id & Quote & CrLf &
+                                         "  - Passes:" & CrLf)
+                    If systemComponent.Passes.Count > 0 Then
+                        For Each systemPass As Pass In systemComponent.Passes
+                            TextBox13.AppendText("    - " & Quote & systemPass.Name & Quote & CrLf)
+                        Next
+                    End If
+                Next
+            End If
+        End If
     End Sub
 
     Private Sub ExpressPanelTrigger_MouseEnter(sender As Object, e As EventArgs) Handles ExpressPanelTrigger.MouseEnter
@@ -992,6 +1139,8 @@ Public Class NewUnattendWiz
             Case 2
                 SelectedArchitecture = DismProcessorArchitecture.ARM64
         End Select
+        ' Disable Windows 11 settings for x86
+        WinSVSettingsPanel.Enabled = Not (SelectedArchitecture = DismProcessorArchitecture.Intel)
     End Sub
 
     Private Sub CheckBox3_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox3.CheckedChanged
@@ -1008,6 +1157,13 @@ Public Class NewUnattendWiz
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+        Try
+            If New StackFrame(6).GetMethod().Name = "ReloadSettings" Then
+                Exit Sub
+            End If
+        Catch ex As Exception
+            ' Continue the method
+        End Try
         ' Hold default value for now
         Dim defVal As Boolean = False
         defVal = PCName.DefaultName
@@ -1245,6 +1401,13 @@ Public Class NewUnattendWiz
         PasswordObfuscate = CheckBox7.Checked
     End Sub
 
+    Private Sub CheckBox18_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox18.CheckedChanged
+        MicrosoftAccountInteractive = CheckBox18.Checked
+        AccountsPanel.Enabled = Not CheckBox18.Checked
+        GroupBox1.Enabled = Not CheckBox18.Checked
+        CheckBox7.Enabled = Not CheckBox18.Checked
+    End Sub
+
     Private Sub RadioButton17_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton17.CheckedChanged
         SelectedExpirationSettings.Mode = If(RadioButton17.Checked, PasswordExpirationMode.NIST_Unlimited, PasswordExpirationMode.NIST_Limited)
         AutoExpirationPanel.Enabled = Not RadioButton17.Checked
@@ -1358,6 +1521,8 @@ Public Class NewUnattendWiz
                 Return "pro_workstations"
             Case "Pro N for Workstations"
                 Return "pro_workstations_n"
+            Case "Enterprise"
+                Return "enterprise"
         End Select
         Return ""
     End Function
@@ -1389,6 +1554,9 @@ Public Class NewUnattendWiz
             End If
         End If
         UnattendGen.StartInfo.Arguments = "/target=" & Quote & SaveTarget & Quote
+        If Debugger.IsAttached Then
+            UnattendGen.StartInfo.Arguments &= " /debug"
+        End If
         Try
             ' Save settings to appropriate XML files
             ReportMessage("Saving user settings...", 2)
@@ -1458,7 +1626,7 @@ Public Class NewUnattendWiz
             Else
                 UnattendGen.StartInfo.Arguments &= " /customkey=" & SelectedKey.Key
             End If
-            If Not UserAccountsInteractive Then
+            If Not UserAccountsInteractive And Not MicrosoftAccountInteractive Then
                 ReportMessage("Saving user settings...", 16)
                 UnattendGen.StartInfo.Arguments &= " /customusers"
                 Dim customUserContents As String = "<?xml version=" & Quote & "1.0" & Quote & " ?>" & CrLf &
@@ -1487,6 +1655,9 @@ Public Class NewUnattendWiz
                 Else
                     UnattendGen.StartInfo.Arguments = UnattendGen.StartInfo.Arguments.Replace(" /customusers", "").Trim()
                 End If
+            ElseIf (Not UserAccountsInteractive) And MicrosoftAccountInteractive Then
+                ReportMessage("Saving user settings...", 16)
+                UnattendGen.StartInfo.Arguments &= " /msa"
             End If
             If SelectedExpirationSettings.Mode = PasswordExpirationMode.NIST_Limited Then
                 ReportMessage("Saving user settings...", 18)
@@ -1494,22 +1665,22 @@ Public Class NewUnattendWiz
             End If
             ReportMessage("Saving user settings...", 20)
             If SelectedLockdownSettings.Enabled Then
-                UnattendGen.StartInfo.Arguments &= " /lockdown=yes"
+                UnattendGen.StartInfo.Arguments &= " /lockout=yes"
                 Dim lockdownContents As String = ""
                 If SelectedLockdownSettings.DefaultPolicy Then
                     lockdownContents = "<?xml version=" & Quote & "1.0" & Quote & " ?>" & CrLf &
                         "<root>" & CrLf &
-                        "   <AccountLockdown FailedAttempts=" & Quote & 10 & Quote & " Timeframe=" & Quote & 10 & Quote & " AutoUnlock=" & Quote & 10 & Quote & " />" & CrLf &
+                        "   <AccountLockout FailedAttempts=" & Quote & 10 & Quote & " Timeframe=" & Quote & 10 & Quote & " AutoUnlock=" & Quote & 10 & Quote & " />" & CrLf &
                         "</root>"
                 Else
                     lockdownContents = "<?xml version=" & Quote & "1.0" & Quote & " ?>" & CrLf &
                         "<root>" & CrLf &
-                        "   <AccountLockdown FailedAttempts=" & Quote & SelectedLockdownSettings.TimedLockdownSettings.FailedAttempts & Quote & " Timeframe=" & Quote & SelectedLockdownSettings.TimedLockdownSettings.Timeframe & Quote & " AutoUnlock=" & Quote & SelectedLockdownSettings.TimedLockdownSettings.AutoUnlockTime & Quote & " />" & CrLf &
+                        "   <AccountLockout FailedAttempts=" & Quote & SelectedLockdownSettings.TimedLockdownSettings.FailedAttempts & Quote & " Timeframe=" & Quote & SelectedLockdownSettings.TimedLockdownSettings.Timeframe & Quote & " AutoUnlock=" & Quote & SelectedLockdownSettings.TimedLockdownSettings.AutoUnlockTime & Quote & " />" & CrLf &
                         "</root>"
                 End If
-                File.WriteAllText(Path.Combine(UnattendGen.StartInfo.WorkingDirectory, "lockDown.xml"), lockdownContents, UTF8)
+                File.WriteAllText(Path.Combine(UnattendGen.StartInfo.WorkingDirectory, "lockout.xml"), lockdownContents, UTF8)
             Else
-                UnattendGen.StartInfo.Arguments &= " /lockdown=no"
+                UnattendGen.StartInfo.Arguments &= " /lockout=no"
             End If
             If VirtualMachineSupported Then
                 ReportMessage("Saving user settings...", 22)
@@ -1542,6 +1713,24 @@ Public Class NewUnattendWiz
                 Else
                     UnattendGen.StartInfo.Arguments &= " /telem=no"
                 End If
+            End If
+            If FinalComponents.Count > 0 Then
+                ReportMessage("Saving user settings...", 24.75)
+                UnattendGen.StartInfo.Arguments &= " /customcomponents"
+                Dim customComponentContents As String = "<?xml version=" & Quote & "1.0" & Quote & " ?>" & CrLf &
+                    "<root>" & CrLf
+                For Each systemComponent As Component In FinalComponents
+                    Dim passName As String = ""
+                    If systemComponent.Passes.Count > 0 Then
+                        For Each systemPass As Pass In systemComponent.Passes
+                            passName &= systemPass.Name & ","
+                        Next
+                        passName = passName.TrimEnd(",")
+                    End If
+                    customComponentContents &= "    <Component Id=" & Quote & systemComponent.Id.Replace("&", "&amp;").Trim() & Quote & " Passes=" & Quote & passName.Replace("&", "&amp;").Trim() & Quote & " />" & CrLf
+                Next
+                customComponentContents &= "</root>"
+                File.WriteAllText(Path.Combine(UnattendGen.StartInfo.WorkingDirectory, "components.xml"), customComponentContents, UTF8)
             End If
             ReportMessage("Generating unattended answer file...", 25)
             UnattendGen.Start()
@@ -1590,6 +1779,10 @@ Public Class NewUnattendWiz
     End Sub
 
     Private Sub LinkLabel2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
+        If MsgBox("Do you want to reuse the settings you've used in this answer file for the new one?", vbQuestion + vbYesNo, Text) = MsgBoxResult.No Then
+            ' Refresh the settings
+            ReloadSettings()
+        End If
         ChangePage(UnattendedWizardPage.Page.RegionalPage)
     End Sub
 
@@ -1752,9 +1945,177 @@ Public Class NewUnattendWiz
         AutoDiskConfigPanel.Width = ManualPartPanel.Width - (AutoDiskConfigPanel.Margin.Left * 2) - 4
         DiskPartPanel.Width = ManualPartPanel.Width - (DiskPartPanel.Margin.Left * 2) - 4
         GroupBox1.Width = ManualAccountPanel.Width - (GroupBox1.Margin.Left * 2) - 4
+        AccountsPanel.Width = UserAccountListing.Width
         UserAccountListing.Width = ManualAccountPanel.Width - (UserAccountListing.Margin.Left * 2) - 4
         WirelessNetworkSettingsPanel.Width = ManualNetworkConfigPanel.Width - (WirelessNetworkSettingsPanel.Margin.Left * 2) - 4
     End Sub
+
+    Private Sub ListBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox2.SelectedIndexChanged
+        PassConfigurationPanel.Visible = (ListBox2.SelectedItems.Count = 1)
+        If ListBox2.SelectedItems.Count = 1 Then
+            For Each configurationPass As Pass In SystemComponents(ListBox2.SelectedIndex).Passes
+                Select Case configurationPass.Name
+                    Case "windowsPE"
+                        windowsPE.Enabled = configurationPass.Compatible
+                        windowsPE.Checked = If(configurationPass.Compatible, configurationPass.Enabled, False)
+                    Case "offlineServicing"
+                        offlineServicing.Enabled = configurationPass.Compatible
+                        offlineServicing.Checked = If(configurationPass.Compatible, configurationPass.Enabled, False)
+                    Case "specialize"
+                        specialize.Enabled = configurationPass.Compatible
+                        specialize.Checked = If(configurationPass.Compatible, configurationPass.Enabled, False)
+                    Case "generalize"
+                        generalize.Enabled = configurationPass.Compatible
+                        generalize.Checked = If(configurationPass.Compatible, configurationPass.Enabled, False)
+                    Case "auditSystem"
+                        auditSystem.Enabled = configurationPass.Compatible
+                        auditSystem.Checked = If(configurationPass.Compatible, configurationPass.Enabled, False)
+                    Case "auditUser"
+                        auditUser.Enabled = configurationPass.Compatible
+                        auditUser.Checked = If(configurationPass.Compatible, configurationPass.Enabled, False)
+                    Case "oobeSystem"
+                        oobeSystem.Enabled = configurationPass.Compatible
+                        oobeSystem.Checked = If(configurationPass.Compatible, configurationPass.Enabled, False)
+                End Select
+            Next
+        End If
+    End Sub
+
+    Private Sub LinkLabel5_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel5.LinkClicked
+        Process.Start("https://learn.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/components-b-unattend")
+    End Sub
+
+    Sub ConfigureComponent(componentName As String, componentPass As String, componentPassEnabled As Boolean)
+        If String.IsNullOrWhiteSpace(componentName) Then Exit Sub
+        If String.IsNullOrWhiteSpace(componentPass) Then Exit Sub
+        Dim componentNames As New List(Of String)
+        Dim knownPasses As New Dictionary(Of String, Boolean)
+        knownPasses.Add("offlineServicing", False)
+        knownPasses.Add("windowsPE", False)
+        knownPasses.Add("generalize", False)
+        knownPasses.Add("specialize", False)
+        knownPasses.Add("auditSystem", False)
+        knownPasses.Add("auditUser", False)
+        knownPasses.Add("oobeSystem", False)
+        For Each systemComponent As Component In SystemComponents
+            componentNames.Add(systemComponent.Id)
+        Next
+        ' Determine if the passed component ID "componentName" exists in the grabbed components
+        If componentNames.Contains(componentName) Then
+            Dim placementIndex As Integer = componentNames.IndexOf(componentName)
+            ' Grab pass to configure and configure it
+            If Not knownPasses.ContainsKey(componentPass) Then
+                MsgBox("The component pass " & componentPass & " does not exist in the pass list", vbOKOnly + vbCritical, Text)
+                Exit Sub
+            End If
+            Dim editedPass As Pass = SystemComponents(placementIndex).Passes.FirstOrDefault(Function(p) p.Name = componentPass)
+            If editedPass IsNot Nothing Then
+                editedPass.Enabled = componentPassEnabled
+                Debug.WriteLine("The pass " & Quote & componentPass & Quote & " of the component " & Quote & SystemComponents(placementIndex).Id & Quote & " has been " & If(SystemComponents(placementIndex).Passes.FirstOrDefault(Function(p) p.Name = componentPass).Enabled, "enabled", "disabled"))
+            Else
+
+            End If
+        Else
+            MsgBox("The component " & componentName & " does not exist in the component list", vbOKOnly + vbCritical, Text)
+            Exit Sub
+        End If
+    End Sub
+
+    Private Sub oobeSystem_CheckedChanged(sender As Object, e As EventArgs) Handles oobeSystem.CheckedChanged
+        ConfigureComponent(ListBox2.SelectedItem, "oobeSystem", oobeSystem.Checked)
+    End Sub
+
+    Private Sub auditUser_CheckedChanged(sender As Object, e As EventArgs) Handles auditUser.CheckedChanged
+        ConfigureComponent(ListBox2.SelectedItem, "auditUser", auditUser.Checked)
+    End Sub
+
+    Private Sub auditSystem_CheckedChanged(sender As Object, e As EventArgs) Handles auditSystem.CheckedChanged
+        ConfigureComponent(ListBox2.SelectedItem, "auditSystem", auditSystem.Checked)
+    End Sub
+
+    Private Sub generalize_CheckedChanged(sender As Object, e As EventArgs) Handles generalize.CheckedChanged
+        ConfigureComponent(ListBox2.SelectedItem, "generalize", generalize.Checked)
+    End Sub
+
+    Private Sub specialize_CheckedChanged(sender As Object, e As EventArgs) Handles specialize.CheckedChanged
+        ConfigureComponent(ListBox2.SelectedItem, "specialize", specialize.Checked)
+    End Sub
+
+    Private Sub offlineServicing_CheckedChanged(sender As Object, e As EventArgs) Handles offlineServicing.CheckedChanged
+        ConfigureComponent(ListBox2.SelectedItem, "offlineServicing", offlineServicing.Checked)
+    End Sub
+
+    Private Sub windowsPE_CheckedChanged(sender As Object, e As EventArgs) Handles windowsPE.CheckedChanged
+        ConfigureComponent(ListBox2.SelectedItem, "windowsPE", windowsPE.Checked)
+    End Sub
+
+    Function AreComponentListsEqual(list1 As List(Of Component), list2 As List(Of Component)) As Boolean
+        ' Check if the counts of both lists are the same
+        If list1.Count <> list2.Count Then Return False
+
+        ' Iterate through components in both lists
+        For i As Integer = 0 To list1.Count - 1
+            Dim component1 As Component = list1(i)
+            Dim component2 As Component = list2(i)
+
+            ' Compare component IDs
+            If component1.Id <> component2.Id Then Return False
+
+            ' Compare the number of passes in each component
+            If component1.Passes.Count <> component2.Passes.Count Then Return False
+
+            ' Compare each pass
+            For j As Integer = 0 To component1.Passes.Count - 1
+                Dim pass1 As Pass = component1.Passes(j)
+                Dim pass2 As Pass = component2.Passes(j)
+
+                ' Compare pass names and compatible states
+                If pass1.Name <> pass2.Name OrElse pass1.Enabled <> pass2.Enabled Then
+                    Return False
+                End If
+            Next
+        Next
+
+        ' If all comparisons pass, the lists are equal
+        Return True
+    End Function
+
+    Function GetComponentDifferences(list1 As List(Of Component), list2 As List(Of Component)) As List(Of Component)
+        Dim differences As New List(Of Component)
+
+        ' Combine both lists to check for differences in either
+        Dim allComponents As List(Of Component) = list1.Concat(list2).GroupBy(Function(c) c.Id).Select(Function(g) g.First()).ToList()
+
+        For Each component In allComponents
+            ' Find the component in both lists
+            Dim component1 As Component = list1.FirstOrDefault(Function(c) c.Id = component.Id)
+            Dim component2 As Component = list2.FirstOrDefault(Function(c) c.Id = component.Id)
+
+            If component1 Is Nothing OrElse component2 Is Nothing Then
+                ' If a component is missing in one of the lists, it's different
+                differences.Add(component)
+            Else
+                ' Compare passes if the component exists in both lists
+                Dim differingComponent As New Component() With {.Id = component.Id}
+                For Each pass1 In component1.Passes
+                    ' Find corresponding pass in component2
+                    Dim pass2 As Pass = component2.Passes.FirstOrDefault(Function(p) p.Name = pass1.Name)
+
+                    If pass2 Is Nothing OrElse pass1.Enabled <> pass2.Enabled Then
+                        ' If pass is missing or its status is different, mark it as different
+                        differingComponent.Passes.Add(pass1)
+                    End If
+                Next
+
+                ' Only add the component if there are differing passes
+                If differingComponent.Passes.Count > 0 Then
+                    differences.Add(differingComponent)
+                End If
+            End If
+        Next
+
+        Return differences
+    End Function
 
     Private Sub LinkLabel6_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel6.LinkClicked
         If File.Exists(Path.Combine(Environment.GetFolderPath(If(Environment.Is64BitOperatingSystem, Environment.SpecialFolder.ProgramFilesX86, Environment.SpecialFolder.ProgramFiles)),
@@ -1785,5 +2146,13 @@ Public Class NewUnattendWiz
         Label3.Text = "Editor mode"
         Label4.Text = "Create your unattended answer files from scratch and save them anywhere"
         FooterContainer.Visible = False
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        TextBox1.Text = My.Computer.Name
+    End Sub
+
+    Private Sub Button3_MouseHover(sender As Object, e As EventArgs) Handles Button3.MouseHover
+        CNameTTip.Show("Uses the name of your computer as the computer name of the unattended answer file." & CrLf & "Only use this if the system you want to target is this one", sender)
     End Sub
 End Class

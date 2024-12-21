@@ -23,19 +23,19 @@ Partial Class NewUnattendWiz
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim TreeNode66 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Welcome")
-        Dim TreeNode67 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Regional Configuration")
-        Dim TreeNode68 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Basic System Configuration")
-        Dim TreeNode69 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Time Zone")
-        Dim TreeNode70 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Disk Configuration")
-        Dim TreeNode71 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Product Key")
-        Dim TreeNode72 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("User Accounts")
-        Dim TreeNode73 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Virtual Machine Support")
-        Dim TreeNode74 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Wireless Networking")
-        Dim TreeNode75 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("System Telemetry")
-        Dim TreeNode76 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Post-Installation Scripts")
-        Dim TreeNode77 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Component Settings")
-        Dim TreeNode78 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Finish")
+        Dim TreeNode1 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Welcome")
+        Dim TreeNode2 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Regional Configuration")
+        Dim TreeNode3 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Basic System Configuration")
+        Dim TreeNode4 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Time Zone")
+        Dim TreeNode5 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Disk Configuration")
+        Dim TreeNode6 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Product Key")
+        Dim TreeNode7 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("User Accounts")
+        Dim TreeNode8 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Virtual Machine Support")
+        Dim TreeNode9 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Wireless Networking")
+        Dim TreeNode10 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("System Telemetry")
+        Dim TreeNode11 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Post-Installation Scripts")
+        Dim TreeNode12 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Component Settings")
+        Dim TreeNode13 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("Finish")
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NewUnattendWiz))
         Me.SidePanel = New System.Windows.Forms.Panel()
         Me.ExpressModeSteps = New System.Windows.Forms.Panel()
@@ -69,6 +69,22 @@ Partial Class NewUnattendWiz
         Me.TextBox13 = New System.Windows.Forms.TextBox()
         Me.FinalReviewHeader = New System.Windows.Forms.Label()
         Me.ComponentPanel = New System.Windows.Forms.Panel()
+        Me.LinkLabel5 = New System.Windows.Forms.LinkLabel()
+        Me.SystemComponentPanel = New System.Windows.Forms.Panel()
+        Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
+        Me.ListBox2 = New System.Windows.Forms.ListBox()
+        Me.PassContainerPanel = New System.Windows.Forms.Panel()
+        Me.PassConfigurationPanel = New System.Windows.Forms.Panel()
+        Me.oobeSystem = New System.Windows.Forms.CheckBox()
+        Me.auditUser = New System.Windows.Forms.CheckBox()
+        Me.auditSystem = New System.Windows.Forms.CheckBox()
+        Me.generalize = New System.Windows.Forms.CheckBox()
+        Me.specialize = New System.Windows.Forms.CheckBox()
+        Me.offlineServicing = New System.Windows.Forms.CheckBox()
+        Me.windowsPE = New System.Windows.Forms.CheckBox()
+        Me.Label61 = New System.Windows.Forms.Label()
+        Me.NoComponentSelectedPanel = New System.Windows.Forms.Panel()
+        Me.Label60 = New System.Windows.Forms.Label()
         Me.Label52 = New System.Windows.Forms.Label()
         Me.ComponentHeader = New System.Windows.Forms.Label()
         Me.PostInstallPanel = New System.Windows.Forms.Panel()
@@ -105,7 +121,7 @@ Partial Class NewUnattendWiz
         Me.RadioButton24 = New System.Windows.Forms.RadioButton()
         Me.RadioButton23 = New System.Windows.Forms.RadioButton()
         Me.VirtualMachineHeader = New System.Windows.Forms.Label()
-        Me.AccountLockdownPanel = New System.Windows.Forms.Panel()
+        Me.AccountLockoutPanel = New System.Windows.Forms.Panel()
         Me.Label44 = New System.Windows.Forms.Label()
         Me.EnabledAccountLockdownPanel = New System.Windows.Forms.Panel()
         Me.AccountLockdownParametersPanel = New System.Windows.Forms.Panel()
@@ -159,6 +175,7 @@ Partial Class NewUnattendWiz
         Me.CheckBox11 = New System.Windows.Forms.CheckBox()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.ComboBox7 = New System.Windows.Forms.ComboBox()
+        Me.UserListOverviewLabel = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.AutoLogonSettingsPanel = New System.Windows.Forms.Panel()
         Me.TextBox5 = New System.Windows.Forms.TextBox()
@@ -166,6 +183,7 @@ Partial Class NewUnattendWiz
         Me.RadioButton15 = New System.Windows.Forms.RadioButton()
         Me.CheckBox12 = New System.Windows.Forms.CheckBox()
         Me.CheckBox7 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox18 = New System.Windows.Forms.CheckBox()
         Me.FillerLabel2 = New System.Windows.Forms.Label()
         Me.UserAccountHeader = New System.Windows.Forms.Label()
         Me.ProductKeyPanel = New System.Windows.Forms.Panel()
@@ -236,6 +254,7 @@ Partial Class NewUnattendWiz
         Me.CheckBox3 = New System.Windows.Forms.CheckBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.ComputerNamePanel = New System.Windows.Forms.Panel()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.WinSVSettingsPanel = New System.Windows.Forms.Panel()
@@ -299,7 +318,7 @@ Partial Class NewUnattendWiz
         Me.UGNotify = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.EditorModeOFD = New System.Windows.Forms.OpenFileDialog()
         Me.EditorModeSFD = New System.Windows.Forms.SaveFileDialog()
-        Me.UserListOverviewLabel = New System.Windows.Forms.Label()
+        Me.CNameTTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.SidePanel.SuspendLayout()
         Me.ExpressModeSteps.SuspendLayout()
         Me.EditorPanelTrigger.SuspendLayout()
@@ -313,6 +332,14 @@ Partial Class NewUnattendWiz
         Me.UnattendProgressPanel.SuspendLayout()
         Me.FinalReviewPanel.SuspendLayout()
         Me.ComponentPanel.SuspendLayout()
+        Me.SystemComponentPanel.SuspendLayout()
+        CType(Me.SplitContainer2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SplitContainer2.Panel1.SuspendLayout()
+        Me.SplitContainer2.Panel2.SuspendLayout()
+        Me.SplitContainer2.SuspendLayout()
+        Me.PassContainerPanel.SuspendLayout()
+        Me.PassConfigurationPanel.SuspendLayout()
+        Me.NoComponentSelectedPanel.SuspendLayout()
         Me.PostInstallPanel.SuspendLayout()
         Me.SystemTelemetryPanel.SuspendLayout()
         Me.TelemetryOptionsPanel.SuspendLayout()
@@ -321,7 +348,7 @@ Partial Class NewUnattendWiz
         Me.WirelessNetworkSettingsPanel.SuspendLayout()
         Me.VirtualMachinePanel.SuspendLayout()
         Me.VMProviderPanel.SuspendLayout()
-        Me.AccountLockdownPanel.SuspendLayout()
+        Me.AccountLockoutPanel.SuspendLayout()
         Me.EnabledAccountLockdownPanel.SuspendLayout()
         Me.AccountLockdownParametersPanel.SuspendLayout()
         CType(Me.NumericUpDown8, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -386,7 +413,7 @@ Partial Class NewUnattendWiz
         Me.SidePanel.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SidePanel.Location = New System.Drawing.Point(0, 0)
         Me.SidePanel.Name = "SidePanel"
-        Me.SidePanel.Size = New System.Drawing.Size(256, 561)
+        Me.SidePanel.Size = New System.Drawing.Size(256, 681)
         Me.SidePanel.TabIndex = 0
         '
         'ExpressModeSteps
@@ -396,7 +423,7 @@ Partial Class NewUnattendWiz
         Me.ExpressModeSteps.Location = New System.Drawing.Point(0, 40)
         Me.ExpressModeSteps.Name = "ExpressModeSteps"
         Me.ExpressModeSteps.Padding = New System.Windows.Forms.Padding(6)
-        Me.ExpressModeSteps.Size = New System.Drawing.Size(256, 481)
+        Me.ExpressModeSteps.Size = New System.Drawing.Size(256, 601)
         Me.ExpressModeSteps.TabIndex = 2
         '
         'StepsTreeView
@@ -409,37 +436,37 @@ Partial Class NewUnattendWiz
         Me.StepsTreeView.ItemHeight = 24
         Me.StepsTreeView.Location = New System.Drawing.Point(6, 6)
         Me.StepsTreeView.Name = "StepsTreeView"
-        TreeNode66.Name = "Nodo0"
-        TreeNode66.Text = "Welcome"
-        TreeNode67.Name = "Nodo1"
-        TreeNode67.Text = "Regional Configuration"
-        TreeNode68.Name = "Nodo2"
-        TreeNode68.Text = "Basic System Configuration"
-        TreeNode69.Name = "Nodo3"
-        TreeNode69.Text = "Time Zone"
-        TreeNode70.Name = "Nodo4"
-        TreeNode70.Text = "Disk Configuration"
-        TreeNode71.Name = "Nodo5"
-        TreeNode71.Text = "Product Key"
-        TreeNode72.Name = "Nodo6"
-        TreeNode72.Text = "User Accounts"
-        TreeNode73.Name = "Nodo9"
-        TreeNode73.Text = "Virtual Machine Support"
-        TreeNode74.Name = "Nodo10"
-        TreeNode74.Text = "Wireless Networking"
-        TreeNode75.Name = "Nodo11"
-        TreeNode75.Text = "System Telemetry"
-        TreeNode76.Name = "Nodo12"
-        TreeNode76.Text = "Post-Installation Scripts"
-        TreeNode77.Name = "Nodo13"
-        TreeNode77.Text = "Component Settings"
-        TreeNode78.Name = "Nodo14"
-        TreeNode78.Text = "Finish"
-        Me.StepsTreeView.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode66, TreeNode67, TreeNode68, TreeNode69, TreeNode70, TreeNode71, TreeNode72, TreeNode73, TreeNode74, TreeNode75, TreeNode76, TreeNode77, TreeNode78})
+        TreeNode1.Name = "Nodo0"
+        TreeNode1.Text = "Welcome"
+        TreeNode2.Name = "Nodo1"
+        TreeNode2.Text = "Regional Configuration"
+        TreeNode3.Name = "Nodo2"
+        TreeNode3.Text = "Basic System Configuration"
+        TreeNode4.Name = "Nodo3"
+        TreeNode4.Text = "Time Zone"
+        TreeNode5.Name = "Nodo4"
+        TreeNode5.Text = "Disk Configuration"
+        TreeNode6.Name = "Nodo5"
+        TreeNode6.Text = "Product Key"
+        TreeNode7.Name = "Nodo6"
+        TreeNode7.Text = "User Accounts"
+        TreeNode8.Name = "Nodo9"
+        TreeNode8.Text = "Virtual Machine Support"
+        TreeNode9.Name = "Nodo10"
+        TreeNode9.Text = "Wireless Networking"
+        TreeNode10.Name = "Nodo11"
+        TreeNode10.Text = "System Telemetry"
+        TreeNode11.Name = "Nodo12"
+        TreeNode11.Text = "Post-Installation Scripts"
+        TreeNode12.Name = "Nodo13"
+        TreeNode12.Text = "Component Settings"
+        TreeNode13.Name = "Nodo14"
+        TreeNode13.Text = "Finish"
+        Me.StepsTreeView.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode1, TreeNode2, TreeNode3, TreeNode4, TreeNode5, TreeNode6, TreeNode7, TreeNode8, TreeNode9, TreeNode10, TreeNode11, TreeNode12, TreeNode13})
         Me.StepsTreeView.ShowLines = False
         Me.StepsTreeView.ShowPlusMinus = False
         Me.StepsTreeView.ShowRootLines = False
-        Me.StepsTreeView.Size = New System.Drawing.Size(244, 469)
+        Me.StepsTreeView.Size = New System.Drawing.Size(244, 589)
         Me.StepsTreeView.TabIndex = 0
         '
         'EditorPanelTrigger
@@ -447,7 +474,7 @@ Partial Class NewUnattendWiz
         Me.EditorPanelTrigger.Controls.Add(Me.Label2)
         Me.EditorPanelTrigger.Controls.Add(Me.PictureBox2)
         Me.EditorPanelTrigger.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.EditorPanelTrigger.Location = New System.Drawing.Point(0, 521)
+        Me.EditorPanelTrigger.Location = New System.Drawing.Point(0, 641)
         Me.EditorPanelTrigger.Name = "EditorPanelTrigger"
         Me.EditorPanelTrigger.Size = New System.Drawing.Size(256, 40)
         Me.EditorPanelTrigger.TabIndex = 1
@@ -510,7 +537,7 @@ Partial Class NewUnattendWiz
         Me.ExpressPanelContainer.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ExpressPanelContainer.Location = New System.Drawing.Point(256, 72)
         Me.ExpressPanelContainer.Name = "ExpressPanelContainer"
-        Me.ExpressPanelContainer.Size = New System.Drawing.Size(752, 449)
+        Me.ExpressPanelContainer.Size = New System.Drawing.Size(1008, 569)
         Me.ExpressPanelContainer.TabIndex = 1
         '
         'ExperimentalPanel
@@ -520,7 +547,7 @@ Partial Class NewUnattendWiz
         Me.ExperimentalPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ExperimentalPanel.Location = New System.Drawing.Point(0, 0)
         Me.ExperimentalPanel.Name = "ExperimentalPanel"
-        Me.ExperimentalPanel.Size = New System.Drawing.Size(752, 449)
+        Me.ExperimentalPanel.Size = New System.Drawing.Size(1008, 569)
         Me.ExperimentalPanel.TabIndex = 2
         '
         'StepsContainer
@@ -533,7 +560,7 @@ Partial Class NewUnattendWiz
         Me.StepsContainer.Controls.Add(Me.SystemTelemetryPanel)
         Me.StepsContainer.Controls.Add(Me.NetworkConnectionPanel)
         Me.StepsContainer.Controls.Add(Me.VirtualMachinePanel)
-        Me.StepsContainer.Controls.Add(Me.AccountLockdownPanel)
+        Me.StepsContainer.Controls.Add(Me.AccountLockoutPanel)
         Me.StepsContainer.Controls.Add(Me.PWExpirationPanel)
         Me.StepsContainer.Controls.Add(Me.UserAccountPanel)
         Me.StepsContainer.Controls.Add(Me.ProductKeyPanel)
@@ -545,7 +572,7 @@ Partial Class NewUnattendWiz
         Me.StepsContainer.Dock = System.Windows.Forms.DockStyle.Fill
         Me.StepsContainer.Location = New System.Drawing.Point(0, 0)
         Me.StepsContainer.Name = "StepsContainer"
-        Me.StepsContainer.Size = New System.Drawing.Size(752, 449)
+        Me.StepsContainer.Size = New System.Drawing.Size(1008, 569)
         Me.StepsContainer.TabIndex = 1
         '
         'FinishPanel
@@ -561,7 +588,7 @@ Partial Class NewUnattendWiz
         Me.FinishPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FinishPanel.Location = New System.Drawing.Point(0, 0)
         Me.FinishPanel.Name = "FinishPanel"
-        Me.FinishPanel.Size = New System.Drawing.Size(752, 449)
+        Me.FinishPanel.Size = New System.Drawing.Size(1008, 569)
         Me.FinishPanel.TabIndex = 16
         '
         'Label59
@@ -662,7 +689,7 @@ Partial Class NewUnattendWiz
         Me.UnattendProgressPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.UnattendProgressPanel.Location = New System.Drawing.Point(0, 0)
         Me.UnattendProgressPanel.Name = "UnattendProgressPanel"
-        Me.UnattendProgressPanel.Size = New System.Drawing.Size(752, 449)
+        Me.UnattendProgressPanel.Size = New System.Drawing.Size(1008, 569)
         Me.UnattendProgressPanel.TabIndex = 15
         '
         'ProgressBar1
@@ -671,7 +698,7 @@ Partial Class NewUnattendWiz
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ProgressBar1.Location = New System.Drawing.Point(96, 86)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(563, 23)
+        Me.ProgressBar1.Size = New System.Drawing.Size(819, 23)
         Me.ProgressBar1.TabIndex = 14
         '
         'Label57
@@ -711,7 +738,7 @@ Partial Class NewUnattendWiz
         Me.FinalReviewPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FinalReviewPanel.Location = New System.Drawing.Point(0, 0)
         Me.FinalReviewPanel.Name = "FinalReviewPanel"
-        Me.FinalReviewPanel.Size = New System.Drawing.Size(752, 449)
+        Me.FinalReviewPanel.Size = New System.Drawing.Size(1008, 569)
         Me.FinalReviewPanel.TabIndex = 14
         '
         'Label54
@@ -719,9 +746,9 @@ Partial Class NewUnattendWiz
         Me.Label54.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label54.AutoEllipsis = True
-        Me.Label54.Location = New System.Drawing.Point(50, 398)
+        Me.Label54.Location = New System.Drawing.Point(50, 518)
         Me.Label54.Name = "Label54"
-        Me.Label54.Size = New System.Drawing.Size(648, 35)
+        Me.Label54.Size = New System.Drawing.Size(904, 35)
         Me.Label54.TabIndex = 15
         Me.Label54.Text = "If something is not right, you will need to go back to that page in order to chan" & _
     "ge the setting. Do not worry: other settings will be kept intact"
@@ -734,7 +761,7 @@ Partial Class NewUnattendWiz
         Me.CheckBox17.Checked = True
         Me.CheckBox17.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox17.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.CheckBox17.Location = New System.Drawing.Point(628, 372)
+        Me.CheckBox17.Location = New System.Drawing.Point(884, 492)
         Me.CheckBox17.Name = "CheckBox17"
         Me.CheckBox17.Size = New System.Drawing.Size(70, 23)
         Me.CheckBox17.TabIndex = 14
@@ -753,7 +780,7 @@ Partial Class NewUnattendWiz
         Me.TextBox13.Name = "TextBox13"
         Me.TextBox13.ReadOnly = True
         Me.TextBox13.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBox13.Size = New System.Drawing.Size(644, 285)
+        Me.TextBox13.Size = New System.Drawing.Size(900, 405)
         Me.TextBox13.TabIndex = 13
         '
         'FinalReviewHeader
@@ -768,23 +795,205 @@ Partial Class NewUnattendWiz
         '
         'ComponentPanel
         '
+        Me.ComponentPanel.Controls.Add(Me.LinkLabel5)
+        Me.ComponentPanel.Controls.Add(Me.SystemComponentPanel)
         Me.ComponentPanel.Controls.Add(Me.Label52)
         Me.ComponentPanel.Controls.Add(Me.ComponentHeader)
         Me.ComponentPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ComponentPanel.Location = New System.Drawing.Point(0, 0)
         Me.ComponentPanel.Name = "ComponentPanel"
-        Me.ComponentPanel.Size = New System.Drawing.Size(752, 449)
+        Me.ComponentPanel.Size = New System.Drawing.Size(1008, 569)
         Me.ComponentPanel.TabIndex = 13
+        '
+        'LinkLabel5
+        '
+        Me.LinkLabel5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.LinkLabel5.AutoSize = True
+        Me.LinkLabel5.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
+        Me.LinkLabel5.LinkColor = System.Drawing.Color.DodgerBlue
+        Me.LinkLabel5.Location = New System.Drawing.Point(53, 533)
+        Me.LinkLabel5.Name = "LinkLabel5"
+        Me.LinkLabel5.Size = New System.Drawing.Size(112, 13)
+        Me.LinkLabel5.TabIndex = 15
+        Me.LinkLabel5.TabStop = True
+        Me.LinkLabel5.Text = "Component reference"
+        '
+        'SystemComponentPanel
+        '
+        Me.SystemComponentPanel.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.SystemComponentPanel.Controls.Add(Me.SplitContainer2)
+        Me.SystemComponentPanel.Location = New System.Drawing.Point(53, 148)
+        Me.SystemComponentPanel.Name = "SystemComponentPanel"
+        Me.SystemComponentPanel.Size = New System.Drawing.Size(901, 373)
+        Me.SystemComponentPanel.TabIndex = 14
+        '
+        'SplitContainer2
+        '
+        Me.SplitContainer2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SplitContainer2.Location = New System.Drawing.Point(0, 0)
+        Me.SplitContainer2.Name = "SplitContainer2"
+        '
+        'SplitContainer2.Panel1
+        '
+        Me.SplitContainer2.Panel1.Controls.Add(Me.ListBox2)
+        '
+        'SplitContainer2.Panel2
+        '
+        Me.SplitContainer2.Panel2.Controls.Add(Me.PassContainerPanel)
+        Me.SplitContainer2.Size = New System.Drawing.Size(901, 373)
+        Me.SplitContainer2.SplitterDistance = 575
+        Me.SplitContainer2.TabIndex = 14
+        '
+        'ListBox2
+        '
+        Me.ListBox2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ListBox2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ListBox2.FormattingEnabled = True
+        Me.ListBox2.IntegralHeight = False
+        Me.ListBox2.ItemHeight = 15
+        Me.ListBox2.Location = New System.Drawing.Point(0, 0)
+        Me.ListBox2.Name = "ListBox2"
+        Me.ListBox2.Size = New System.Drawing.Size(575, 373)
+        Me.ListBox2.TabIndex = 0
+        '
+        'PassContainerPanel
+        '
+        Me.PassContainerPanel.Controls.Add(Me.PassConfigurationPanel)
+        Me.PassContainerPanel.Controls.Add(Me.NoComponentSelectedPanel)
+        Me.PassContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PassContainerPanel.Location = New System.Drawing.Point(0, 0)
+        Me.PassContainerPanel.Name = "PassContainerPanel"
+        Me.PassContainerPanel.Size = New System.Drawing.Size(322, 373)
+        Me.PassContainerPanel.TabIndex = 0
+        '
+        'PassConfigurationPanel
+        '
+        Me.PassConfigurationPanel.Controls.Add(Me.oobeSystem)
+        Me.PassConfigurationPanel.Controls.Add(Me.auditUser)
+        Me.PassConfigurationPanel.Controls.Add(Me.auditSystem)
+        Me.PassConfigurationPanel.Controls.Add(Me.generalize)
+        Me.PassConfigurationPanel.Controls.Add(Me.specialize)
+        Me.PassConfigurationPanel.Controls.Add(Me.offlineServicing)
+        Me.PassConfigurationPanel.Controls.Add(Me.windowsPE)
+        Me.PassConfigurationPanel.Controls.Add(Me.Label61)
+        Me.PassConfigurationPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PassConfigurationPanel.Location = New System.Drawing.Point(0, 0)
+        Me.PassConfigurationPanel.Name = "PassConfigurationPanel"
+        Me.PassConfigurationPanel.Size = New System.Drawing.Size(322, 373)
+        Me.PassConfigurationPanel.TabIndex = 0
+        Me.PassConfigurationPanel.Visible = False
+        '
+        'oobeSystem
+        '
+        Me.oobeSystem.AutoSize = True
+        Me.oobeSystem.Location = New System.Drawing.Point(25, 184)
+        Me.oobeSystem.Name = "oobeSystem"
+        Me.oobeSystem.Size = New System.Drawing.Size(85, 17)
+        Me.oobeSystem.TabIndex = 1
+        Me.oobeSystem.Text = "oobeSystem"
+        Me.oobeSystem.UseVisualStyleBackColor = True
+        '
+        'auditUser
+        '
+        Me.auditUser.AutoSize = True
+        Me.auditUser.Location = New System.Drawing.Point(25, 161)
+        Me.auditUser.Name = "auditUser"
+        Me.auditUser.Size = New System.Drawing.Size(72, 17)
+        Me.auditUser.TabIndex = 1
+        Me.auditUser.Text = "auditUser"
+        Me.auditUser.UseVisualStyleBackColor = True
+        '
+        'auditSystem
+        '
+        Me.auditSystem.AutoSize = True
+        Me.auditSystem.Location = New System.Drawing.Point(25, 138)
+        Me.auditSystem.Name = "auditSystem"
+        Me.auditSystem.Size = New System.Drawing.Size(85, 17)
+        Me.auditSystem.TabIndex = 1
+        Me.auditSystem.Text = "auditSystem"
+        Me.auditSystem.UseVisualStyleBackColor = True
+        '
+        'generalize
+        '
+        Me.generalize.AutoSize = True
+        Me.generalize.Location = New System.Drawing.Point(25, 116)
+        Me.generalize.Name = "generalize"
+        Me.generalize.Size = New System.Drawing.Size(75, 17)
+        Me.generalize.TabIndex = 1
+        Me.generalize.Text = "generalize"
+        Me.generalize.UseVisualStyleBackColor = True
+        '
+        'specialize
+        '
+        Me.specialize.AutoSize = True
+        Me.specialize.Location = New System.Drawing.Point(25, 93)
+        Me.specialize.Name = "specialize"
+        Me.specialize.Size = New System.Drawing.Size(71, 17)
+        Me.specialize.TabIndex = 1
+        Me.specialize.Text = "specialize"
+        Me.specialize.UseVisualStyleBackColor = True
+        '
+        'offlineServicing
+        '
+        Me.offlineServicing.AutoSize = True
+        Me.offlineServicing.Location = New System.Drawing.Point(25, 70)
+        Me.offlineServicing.Name = "offlineServicing"
+        Me.offlineServicing.Size = New System.Drawing.Size(99, 17)
+        Me.offlineServicing.TabIndex = 1
+        Me.offlineServicing.Text = "offlineServicing"
+        Me.offlineServicing.UseVisualStyleBackColor = True
+        '
+        'windowsPE
+        '
+        Me.windowsPE.AutoSize = True
+        Me.windowsPE.Location = New System.Drawing.Point(25, 46)
+        Me.windowsPE.Name = "windowsPE"
+        Me.windowsPE.Size = New System.Drawing.Size(79, 17)
+        Me.windowsPE.TabIndex = 1
+        Me.windowsPE.Text = "windowsPE"
+        Me.windowsPE.UseVisualStyleBackColor = True
+        '
+        'Label61
+        '
+        Me.Label61.AutoSize = True
+        Me.Label61.Location = New System.Drawing.Point(11, 10)
+        Me.Label61.Name = "Label61"
+        Me.Label61.Size = New System.Drawing.Size(94, 13)
+        Me.Label61.TabIndex = 0
+        Me.Label61.Text = "Configure passes:"
+        '
+        'NoComponentSelectedPanel
+        '
+        Me.NoComponentSelectedPanel.Controls.Add(Me.Label60)
+        Me.NoComponentSelectedPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.NoComponentSelectedPanel.Location = New System.Drawing.Point(0, 0)
+        Me.NoComponentSelectedPanel.Name = "NoComponentSelectedPanel"
+        Me.NoComponentSelectedPanel.Size = New System.Drawing.Size(322, 373)
+        Me.NoComponentSelectedPanel.TabIndex = 0
+        '
+        'Label60
+        '
+        Me.Label60.AutoEllipsis = True
+        Me.Label60.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Label60.Location = New System.Drawing.Point(0, 0)
+        Me.Label60.Name = "Label60"
+        Me.Label60.Size = New System.Drawing.Size(322, 373)
+        Me.Label60.TabIndex = 0
+        Me.Label60.Text = "Select a component to configure passes"
+        Me.Label60.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label52
         '
+        Me.Label52.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label52.AutoEllipsis = True
-        Me.Label52.Location = New System.Drawing.Point(107, 156)
+        Me.Label52.Location = New System.Drawing.Point(52, 67)
         Me.Label52.Name = "Label52"
-        Me.Label52.Size = New System.Drawing.Size(558, 66)
+        Me.Label52.Size = New System.Drawing.Size(912, 69)
         Me.Label52.TabIndex = 12
-        Me.Label52.Text = "This action will be added in the future. For now, you can use the editor mode to " & _
-    "add more components. You can continue."
+        Me.Label52.Text = resources.GetString("Label52.Text")
         '
         'ComponentHeader
         '
@@ -803,7 +1012,7 @@ Partial Class NewUnattendWiz
         Me.PostInstallPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PostInstallPanel.Location = New System.Drawing.Point(0, 0)
         Me.PostInstallPanel.Name = "PostInstallPanel"
-        Me.PostInstallPanel.Size = New System.Drawing.Size(752, 449)
+        Me.PostInstallPanel.Size = New System.Drawing.Size(1008, 569)
         Me.PostInstallPanel.TabIndex = 12
         '
         'Label51
@@ -833,7 +1042,7 @@ Partial Class NewUnattendWiz
         Me.SystemTelemetryPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SystemTelemetryPanel.Location = New System.Drawing.Point(0, 0)
         Me.SystemTelemetryPanel.Name = "SystemTelemetryPanel"
-        Me.SystemTelemetryPanel.Size = New System.Drawing.Size(752, 449)
+        Me.SystemTelemetryPanel.Size = New System.Drawing.Size(1008, 569)
         Me.SystemTelemetryPanel.TabIndex = 11
         '
         'TelemetryOptionsPanel
@@ -844,7 +1053,7 @@ Partial Class NewUnattendWiz
         Me.TelemetryOptionsPanel.Controls.Add(Me.RadioButton26)
         Me.TelemetryOptionsPanel.Location = New System.Drawing.Point(59, 80)
         Me.TelemetryOptionsPanel.Name = "TelemetryOptionsPanel"
-        Me.TelemetryOptionsPanel.Size = New System.Drawing.Size(635, 93)
+        Me.TelemetryOptionsPanel.Size = New System.Drawing.Size(891, 93)
         Me.TelemetryOptionsPanel.TabIndex = 13
         '
         'RadioButton27
@@ -873,7 +1082,7 @@ Partial Class NewUnattendWiz
         '
         Me.CheckBox16.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.CheckBox16.AutoSize = True
-        Me.CheckBox16.Location = New System.Drawing.Point(65, 392)
+        Me.CheckBox16.Location = New System.Drawing.Point(65, 512)
         Me.CheckBox16.Name = "CheckBox16"
         Me.CheckBox16.Size = New System.Drawing.Size(276, 17)
         Me.CheckBox16.TabIndex = 12
@@ -898,7 +1107,7 @@ Partial Class NewUnattendWiz
         Me.NetworkConnectionPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.NetworkConnectionPanel.Location = New System.Drawing.Point(0, 0)
         Me.NetworkConnectionPanel.Name = "NetworkConnectionPanel"
-        Me.NetworkConnectionPanel.Size = New System.Drawing.Size(752, 449)
+        Me.NetworkConnectionPanel.Size = New System.Drawing.Size(1008, 569)
         Me.NetworkConnectionPanel.TabIndex = 10
         '
         'ManualNetworkConfigPanel
@@ -917,7 +1126,7 @@ Partial Class NewUnattendWiz
         Me.ManualNetworkConfigPanel.Location = New System.Drawing.Point(65, 74)
         Me.ManualNetworkConfigPanel.Name = "ManualNetworkConfigPanel"
         Me.ManualNetworkConfigPanel.Padding = New System.Windows.Forms.Padding(4, 6, 0, 0)
-        Me.ManualNetworkConfigPanel.Size = New System.Drawing.Size(622, 300)
+        Me.ManualNetworkConfigPanel.Size = New System.Drawing.Size(878, 420)
         Me.ManualNetworkConfigPanel.TabIndex = 12
         Me.ManualNetworkConfigPanel.WrapContents = False
         '
@@ -966,7 +1175,7 @@ Partial Class NewUnattendWiz
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox10.Location = New System.Drawing.Point(277, 155)
         Me.TextBox10.Name = "TextBox10"
-        Me.TextBox10.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.TextBox10.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
         Me.TextBox10.Size = New System.Drawing.Size(221, 21)
         Me.TextBox10.TabIndex = 2
         '
@@ -1067,7 +1276,7 @@ Partial Class NewUnattendWiz
         Me.CheckBox14.AutoSize = True
         Me.CheckBox14.Checked = True
         Me.CheckBox14.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBox14.Location = New System.Drawing.Point(65, 392)
+        Me.CheckBox14.Location = New System.Drawing.Point(65, 512)
         Me.CheckBox14.Name = "CheckBox14"
         Me.CheckBox14.Size = New System.Drawing.Size(276, 17)
         Me.CheckBox14.TabIndex = 11
@@ -1093,7 +1302,7 @@ Partial Class NewUnattendWiz
         Me.VirtualMachinePanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.VirtualMachinePanel.Location = New System.Drawing.Point(0, 0)
         Me.VirtualMachinePanel.Name = "VirtualMachinePanel"
-        Me.VirtualMachinePanel.Size = New System.Drawing.Size(752, 449)
+        Me.VirtualMachinePanel.Size = New System.Drawing.Size(1008, 569)
         Me.VirtualMachinePanel.TabIndex = 9
         '
         'VMProviderPanel
@@ -1106,7 +1315,7 @@ Partial Class NewUnattendWiz
         Me.VMProviderPanel.Enabled = False
         Me.VMProviderPanel.Location = New System.Drawing.Point(82, 93)
         Me.VMProviderPanel.Name = "VMProviderPanel"
-        Me.VMProviderPanel.Size = New System.Drawing.Size(624, 114)
+        Me.VMProviderPanel.Size = New System.Drawing.Size(880, 114)
         Me.VMProviderPanel.TabIndex = 11
         '
         'Label46
@@ -1127,7 +1336,7 @@ Partial Class NewUnattendWiz
         Me.ComboBox8.Items.AddRange(New Object() {"VirtualBox Guest Additions", "VMware Tools", "VirtIO Guest Tools"})
         Me.ComboBox8.Location = New System.Drawing.Point(162, 19)
         Me.ComboBox8.Name = "ComboBox8"
-        Me.ComboBox8.Size = New System.Drawing.Size(439, 21)
+        Me.ComboBox8.Size = New System.Drawing.Size(695, 21)
         Me.ComboBox8.TabIndex = 1
         Me.ComboBox8.Text = "VirtIO Guest Tools"
         '
@@ -1172,23 +1381,23 @@ Partial Class NewUnattendWiz
         Me.VirtualMachineHeader.TabIndex = 9
         Me.VirtualMachineHeader.Text = "Do you want to add enhanced support from your virtual machine solution?"
         '
-        'AccountLockdownPanel
+        'AccountLockoutPanel
         '
-        Me.AccountLockdownPanel.Controls.Add(Me.Label44)
-        Me.AccountLockdownPanel.Controls.Add(Me.EnabledAccountLockdownPanel)
-        Me.AccountLockdownPanel.Controls.Add(Me.CheckBox13)
-        Me.AccountLockdownPanel.Controls.Add(Me.AccountLockdownHeader)
-        Me.AccountLockdownPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.AccountLockdownPanel.Location = New System.Drawing.Point(0, 0)
-        Me.AccountLockdownPanel.Name = "AccountLockdownPanel"
-        Me.AccountLockdownPanel.Size = New System.Drawing.Size(752, 449)
-        Me.AccountLockdownPanel.TabIndex = 8
+        Me.AccountLockoutPanel.Controls.Add(Me.Label44)
+        Me.AccountLockoutPanel.Controls.Add(Me.EnabledAccountLockdownPanel)
+        Me.AccountLockoutPanel.Controls.Add(Me.CheckBox13)
+        Me.AccountLockoutPanel.Controls.Add(Me.AccountLockdownHeader)
+        Me.AccountLockoutPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.AccountLockoutPanel.Location = New System.Drawing.Point(0, 0)
+        Me.AccountLockoutPanel.Name = "AccountLockoutPanel"
+        Me.AccountLockoutPanel.Size = New System.Drawing.Size(1008, 569)
+        Me.AccountLockoutPanel.TabIndex = 8
         '
         'Label44
         '
         Me.Label44.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label44.AutoSize = True
-        Me.Label44.Location = New System.Drawing.Point(81, 392)
+        Me.Label44.Location = New System.Drawing.Point(81, 512)
         Me.Label44.Name = "Label44"
         Me.Label44.Size = New System.Drawing.Size(443, 13)
         Me.Label44.TabIndex = 13
@@ -1205,7 +1414,7 @@ Partial Class NewUnattendWiz
         Me.EnabledAccountLockdownPanel.Controls.Add(Me.RadioButton21)
         Me.EnabledAccountLockdownPanel.Location = New System.Drawing.Point(57, 65)
         Me.EnabledAccountLockdownPanel.Name = "EnabledAccountLockdownPanel"
-        Me.EnabledAccountLockdownPanel.Size = New System.Drawing.Size(650, 198)
+        Me.EnabledAccountLockdownPanel.Size = New System.Drawing.Size(906, 318)
         Me.EnabledAccountLockdownPanel.TabIndex = 12
         '
         'AccountLockdownParametersPanel
@@ -1222,13 +1431,13 @@ Partial Class NewUnattendWiz
         Me.AccountLockdownParametersPanel.Enabled = False
         Me.AccountLockdownParametersPanel.Location = New System.Drawing.Point(27, 54)
         Me.AccountLockdownParametersPanel.Name = "AccountLockdownParametersPanel"
-        Me.AccountLockdownParametersPanel.Size = New System.Drawing.Size(602, 139)
+        Me.AccountLockdownParametersPanel.Size = New System.Drawing.Size(858, 139)
         Me.AccountLockdownParametersPanel.TabIndex = 10
         '
         'NumericUpDown8
         '
         Me.NumericUpDown8.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.NumericUpDown8.Location = New System.Drawing.Point(351, 91)
+        Me.NumericUpDown8.Location = New System.Drawing.Point(479, 91)
         Me.NumericUpDown8.Maximum = New Decimal(New Integer() {99999, 0, 0, 0})
         Me.NumericUpDown8.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDown8.Name = "NumericUpDown8"
@@ -1239,7 +1448,7 @@ Partial Class NewUnattendWiz
         'NumericUpDown7
         '
         Me.NumericUpDown7.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.NumericUpDown7.Location = New System.Drawing.Point(351, 64)
+        Me.NumericUpDown7.Location = New System.Drawing.Point(479, 64)
         Me.NumericUpDown7.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
         Me.NumericUpDown7.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDown7.Name = "NumericUpDown7"
@@ -1250,7 +1459,7 @@ Partial Class NewUnattendWiz
         'NumericUpDown6
         '
         Me.NumericUpDown6.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.NumericUpDown6.Location = New System.Drawing.Point(351, 37)
+        Me.NumericUpDown6.Location = New System.Drawing.Point(479, 37)
         Me.NumericUpDown6.Maximum = New Decimal(New Integer() {999, 0, 0, 0})
         Me.NumericUpDown6.Name = "NumericUpDown6"
         Me.NumericUpDown6.Size = New System.Drawing.Size(120, 21)
@@ -1261,7 +1470,7 @@ Partial Class NewUnattendWiz
         '
         Me.Label43.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label43.AutoEllipsis = True
-        Me.Label43.Location = New System.Drawing.Point(30, 93)
+        Me.Label43.Location = New System.Drawing.Point(158, 93)
         Me.Label43.Name = "Label43"
         Me.Label43.Size = New System.Drawing.Size(314, 35)
         Me.Label43.TabIndex = 0
@@ -1272,7 +1481,7 @@ Partial Class NewUnattendWiz
         '
         Me.Label42.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label42.AutoEllipsis = True
-        Me.Label42.Location = New System.Drawing.Point(30, 67)
+        Me.Label42.Location = New System.Drawing.Point(158, 67)
         Me.Label42.Name = "Label42"
         Me.Label42.Size = New System.Drawing.Size(314, 13)
         Me.Label42.TabIndex = 0
@@ -1283,7 +1492,7 @@ Partial Class NewUnattendWiz
         '
         Me.Label41.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label41.AutoEllipsis = True
-        Me.Label41.Location = New System.Drawing.Point(30, 39)
+        Me.Label41.Location = New System.Drawing.Point(158, 39)
         Me.Label41.Name = "Label41"
         Me.Label41.Size = New System.Drawing.Size(314, 13)
         Me.Label41.TabIndex = 0
@@ -1304,9 +1513,9 @@ Partial Class NewUnattendWiz
         Me.RadioButton22.AutoSize = True
         Me.RadioButton22.Location = New System.Drawing.Point(8, 29)
         Me.RadioButton22.Name = "RadioButton22"
-        Me.RadioButton22.Size = New System.Drawing.Size(257, 17)
+        Me.RadioButton22.Size = New System.Drawing.Size(247, 17)
         Me.RadioButton22.TabIndex = 9
-        Me.RadioButton22.Text = "Continue with custom Account Lockdown policies"
+        Me.RadioButton22.Text = "Continue with custom Account Lockout policies"
         Me.RadioButton22.UseVisualStyleBackColor = True
         '
         'RadioButton21
@@ -1315,17 +1524,17 @@ Partial Class NewUnattendWiz
         Me.RadioButton21.Checked = True
         Me.RadioButton21.Location = New System.Drawing.Point(8, 6)
         Me.RadioButton21.Name = "RadioButton21"
-        Me.RadioButton21.Size = New System.Drawing.Size(257, 17)
+        Me.RadioButton21.Size = New System.Drawing.Size(247, 17)
         Me.RadioButton21.TabIndex = 9
         Me.RadioButton21.TabStop = True
-        Me.RadioButton21.Text = "Continue with default Account Lockdown policies"
+        Me.RadioButton21.Text = "Continue with default Account Lockout policies"
         Me.RadioButton21.UseVisualStyleBackColor = True
         '
         'CheckBox13
         '
         Me.CheckBox13.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.CheckBox13.AutoSize = True
-        Me.CheckBox13.Location = New System.Drawing.Point(65, 369)
+        Me.CheckBox13.Location = New System.Drawing.Point(65, 489)
         Me.CheckBox13.Name = "CheckBox13"
         Me.CheckBox13.Size = New System.Drawing.Size(90, 17)
         Me.CheckBox13.TabIndex = 11
@@ -1340,7 +1549,7 @@ Partial Class NewUnattendWiz
         Me.AccountLockdownHeader.Name = "AccountLockdownHeader"
         Me.AccountLockdownHeader.Size = New System.Drawing.Size(708, 51)
         Me.AccountLockdownHeader.TabIndex = 8
-        Me.AccountLockdownHeader.Text = "Configure Account Lockdown policies for the target system"
+        Me.AccountLockdownHeader.Text = "Configure Account Lockout policies for the target system"
         '
         'PWExpirationPanel
         '
@@ -1351,7 +1560,7 @@ Partial Class NewUnattendWiz
         Me.PWExpirationPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PWExpirationPanel.Location = New System.Drawing.Point(0, 0)
         Me.PWExpirationPanel.Name = "PWExpirationPanel"
-        Me.PWExpirationPanel.Size = New System.Drawing.Size(752, 449)
+        Me.PWExpirationPanel.Size = New System.Drawing.Size(1008, 569)
         Me.PWExpirationPanel.TabIndex = 7
         '
         'AutoExpirationPanel
@@ -1364,7 +1573,7 @@ Partial Class NewUnattendWiz
         Me.AutoExpirationPanel.Enabled = False
         Me.AutoExpirationPanel.Location = New System.Drawing.Point(80, 122)
         Me.AutoExpirationPanel.Name = "AutoExpirationPanel"
-        Me.AutoExpirationPanel.Size = New System.Drawing.Size(606, 107)
+        Me.AutoExpirationPanel.Size = New System.Drawing.Size(862, 107)
         Me.AutoExpirationPanel.TabIndex = 9
         '
         'TimedExpirationPanel
@@ -1376,14 +1585,14 @@ Partial Class NewUnattendWiz
         Me.TimedExpirationPanel.Enabled = False
         Me.TimedExpirationPanel.Location = New System.Drawing.Point(31, 59)
         Me.TimedExpirationPanel.Name = "TimedExpirationPanel"
-        Me.TimedExpirationPanel.Size = New System.Drawing.Size(562, 35)
+        Me.TimedExpirationPanel.Size = New System.Drawing.Size(818, 35)
         Me.TimedExpirationPanel.TabIndex = 1
         '
         'Label39
         '
         Me.Label39.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label39.AutoSize = True
-        Me.Label39.Location = New System.Drawing.Point(291, 11)
+        Me.Label39.Location = New System.Drawing.Point(419, 11)
         Me.Label39.Name = "Label39"
         Me.Label39.Size = New System.Drawing.Size(30, 13)
         Me.Label39.TabIndex = 1
@@ -1392,7 +1601,7 @@ Partial Class NewUnattendWiz
         'NumericUpDown5
         '
         Me.NumericUpDown5.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.NumericUpDown5.Location = New System.Drawing.Point(241, 7)
+        Me.NumericUpDown5.Location = New System.Drawing.Point(369, 7)
         Me.NumericUpDown5.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDown5.Name = "NumericUpDown5"
         Me.NumericUpDown5.Size = New System.Drawing.Size(44, 21)
@@ -1459,18 +1668,19 @@ Partial Class NewUnattendWiz
         Me.UserAccountPanel.Controls.Add(Me.Label34)
         Me.UserAccountPanel.Controls.Add(Me.CheckBox6)
         Me.UserAccountPanel.Controls.Add(Me.ManualAccountPanel)
+        Me.UserAccountPanel.Controls.Add(Me.FillerLabel2)
         Me.UserAccountPanel.Controls.Add(Me.UserAccountHeader)
         Me.UserAccountPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.UserAccountPanel.Location = New System.Drawing.Point(0, 0)
         Me.UserAccountPanel.Name = "UserAccountPanel"
-        Me.UserAccountPanel.Size = New System.Drawing.Size(752, 449)
+        Me.UserAccountPanel.Size = New System.Drawing.Size(1008, 569)
         Me.UserAccountPanel.TabIndex = 6
         '
         'Label34
         '
         Me.Label34.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label34.AutoSize = True
-        Me.Label34.Location = New System.Drawing.Point(81, 414)
+        Me.Label34.Location = New System.Drawing.Point(81, 534)
         Me.Label34.Name = "Label34"
         Me.Label34.Size = New System.Drawing.Size(286, 13)
         Me.Label34.TabIndex = 11
@@ -1482,7 +1692,7 @@ Partial Class NewUnattendWiz
         Me.CheckBox6.AutoSize = True
         Me.CheckBox6.Checked = True
         Me.CheckBox6.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBox6.Location = New System.Drawing.Point(65, 392)
+        Me.CheckBox6.Location = New System.Drawing.Point(65, 512)
         Me.CheckBox6.Name = "CheckBox6"
         Me.CheckBox6.Size = New System.Drawing.Size(276, 17)
         Me.CheckBox6.TabIndex = 10
@@ -1498,13 +1708,13 @@ Partial Class NewUnattendWiz
         Me.ManualAccountPanel.Controls.Add(Me.UserAccountListing)
         Me.ManualAccountPanel.Controls.Add(Me.GroupBox1)
         Me.ManualAccountPanel.Controls.Add(Me.CheckBox7)
-        Me.ManualAccountPanel.Controls.Add(Me.FillerLabel2)
+        Me.ManualAccountPanel.Controls.Add(Me.CheckBox18)
         Me.ManualAccountPanel.Enabled = False
         Me.ManualAccountPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
         Me.ManualAccountPanel.Location = New System.Drawing.Point(65, 71)
         Me.ManualAccountPanel.Name = "ManualAccountPanel"
         Me.ManualAccountPanel.Padding = New System.Windows.Forms.Padding(4, 6, 0, 0)
-        Me.ManualAccountPanel.Size = New System.Drawing.Size(622, 305)
+        Me.ManualAccountPanel.Size = New System.Drawing.Size(878, 425)
         Me.ManualAccountPanel.TabIndex = 9
         Me.ManualAccountPanel.WrapContents = False
         '
@@ -1616,7 +1826,7 @@ Partial Class NewUnattendWiz
         Me.TextBox18.Enabled = False
         Me.TextBox18.Location = New System.Drawing.Point(300, 129)
         Me.TextBox18.Name = "TextBox18"
-        Me.TextBox18.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.TextBox18.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
         Me.TextBox18.Size = New System.Drawing.Size(141, 21)
         Me.TextBox18.TabIndex = 18
         '
@@ -1636,7 +1846,7 @@ Partial Class NewUnattendWiz
         Me.TextBox15.Enabled = False
         Me.TextBox15.Location = New System.Drawing.Point(300, 104)
         Me.TextBox15.Name = "TextBox15"
-        Me.TextBox15.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.TextBox15.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
         Me.TextBox15.Size = New System.Drawing.Size(141, 21)
         Me.TextBox15.TabIndex = 15
         '
@@ -1656,7 +1866,7 @@ Partial Class NewUnattendWiz
         Me.TextBox12.Enabled = False
         Me.TextBox12.Location = New System.Drawing.Point(300, 79)
         Me.TextBox12.Name = "TextBox12"
-        Me.TextBox12.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.TextBox12.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
         Me.TextBox12.Size = New System.Drawing.Size(141, 21)
         Me.TextBox12.TabIndex = 12
         '
@@ -1676,7 +1886,7 @@ Partial Class NewUnattendWiz
         Me.TextBox9.Enabled = False
         Me.TextBox9.Location = New System.Drawing.Point(300, 54)
         Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.TextBox9.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
         Me.TextBox9.Size = New System.Drawing.Size(141, 21)
         Me.TextBox9.TabIndex = 9
         '
@@ -1695,7 +1905,7 @@ Partial Class NewUnattendWiz
         Me.TextBox6.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TextBox6.Location = New System.Drawing.Point(300, 29)
         Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.TextBox6.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
         Me.TextBox6.Size = New System.Drawing.Size(141, 21)
         Me.TextBox6.TabIndex = 6
         '
@@ -1803,6 +2013,17 @@ Partial Class NewUnattendWiz
         Me.ComboBox7.TabIndex = 19
         Me.ComboBox7.Text = "Administrators"
         '
+        'UserListOverviewLabel
+        '
+        Me.UserListOverviewLabel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.UserListOverviewLabel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.UserListOverviewLabel.Location = New System.Drawing.Point(4, 1)
+        Me.UserListOverviewLabel.Name = "UserListOverviewLabel"
+        Me.UserListOverviewLabel.Size = New System.Drawing.Size(141, 24)
+        Me.UserListOverviewLabel.TabIndex = 25
+        Me.UserListOverviewLabel.Text = "User accounts:"
+        Me.UserListOverviewLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'GroupBox1
         '
         Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -1836,7 +2057,7 @@ Partial Class NewUnattendWiz
         Me.TextBox5.Enabled = False
         Me.TextBox5.Location = New System.Drawing.Point(327, 31)
         Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.TextBox5.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
         Me.TextBox5.Size = New System.Drawing.Size(204, 21)
         Me.TextBox5.TabIndex = 7
         '
@@ -1875,6 +2096,8 @@ Partial Class NewUnattendWiz
         'CheckBox7
         '
         Me.CheckBox7.AutoSize = True
+        Me.CheckBox7.Checked = True
+        Me.CheckBox7.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox7.Location = New System.Drawing.Point(7, 283)
         Me.CheckBox7.Name = "CheckBox7"
         Me.CheckBox7.Size = New System.Drawing.Size(181, 17)
@@ -1882,10 +2105,20 @@ Partial Class NewUnattendWiz
         Me.CheckBox7.Text = "Obscure passwords with Base64"
         Me.CheckBox7.UseVisualStyleBackColor = True
         '
+        'CheckBox18
+        '
+        Me.CheckBox18.AutoSize = True
+        Me.CheckBox18.Location = New System.Drawing.Point(7, 306)
+        Me.CheckBox18.Name = "CheckBox18"
+        Me.CheckBox18.Size = New System.Drawing.Size(219, 17)
+        Me.CheckBox18.TabIndex = 5
+        Me.CheckBox18.Text = "Ask for a Microsoft account interactively"
+        Me.CheckBox18.UseVisualStyleBackColor = True
+        '
         'FillerLabel2
         '
         Me.FillerLabel2.AutoEllipsis = True
-        Me.FillerLabel2.Location = New System.Drawing.Point(7, 303)
+        Me.FillerLabel2.Location = New System.Drawing.Point(73, 374)
         Me.FillerLabel2.Name = "FillerLabel2"
         Me.FillerLabel2.Padding = New System.Windows.Forms.Padding(0, 2, 0, 0)
         Me.FillerLabel2.Size = New System.Drawing.Size(405, 6)
@@ -1912,7 +2145,7 @@ Partial Class NewUnattendWiz
         Me.ProductKeyPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ProductKeyPanel.Location = New System.Drawing.Point(0, 0)
         Me.ProductKeyPanel.Name = "ProductKeyPanel"
-        Me.ProductKeyPanel.Size = New System.Drawing.Size(752, 449)
+        Me.ProductKeyPanel.Size = New System.Drawing.Size(1008, 569)
         Me.ProductKeyPanel.TabIndex = 5
         '
         'ManualKeyPanel
@@ -1926,7 +2159,7 @@ Partial Class NewUnattendWiz
         Me.ManualKeyPanel.Enabled = False
         Me.ManualKeyPanel.Location = New System.Drawing.Point(85, 225)
         Me.ManualKeyPanel.Name = "ManualKeyPanel"
-        Me.ManualKeyPanel.Size = New System.Drawing.Size(602, 140)
+        Me.ManualKeyPanel.Size = New System.Drawing.Size(858, 140)
         Me.ManualKeyPanel.TabIndex = 8
         '
         'KeyVerifyWarningPanel
@@ -1937,7 +2170,7 @@ Partial Class NewUnattendWiz
         Me.KeyVerifyWarningPanel.Controls.Add(Me.Label31)
         Me.KeyVerifyWarningPanel.Location = New System.Drawing.Point(22, 57)
         Me.KeyVerifyWarningPanel.Name = "KeyVerifyWarningPanel"
-        Me.KeyVerifyWarningPanel.Size = New System.Drawing.Size(565, 69)
+        Me.KeyVerifyWarningPanel.Size = New System.Drawing.Size(821, 69)
         Me.KeyVerifyWarningPanel.TabIndex = 4
         '
         'Label32
@@ -1967,7 +2200,7 @@ Partial Class NewUnattendWiz
         Me.Label33.AutoEllipsis = True
         Me.Label33.Location = New System.Drawing.Point(19, 38)
         Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(569, 13)
+        Me.Label33.Size = New System.Drawing.Size(825, 13)
         Me.Label33.TabIndex = 0
         Me.Label33.Text = "(Type each character of the product key, including the dashes)"
         '
@@ -1987,7 +2220,7 @@ Partial Class NewUnattendWiz
         Me.TextBox3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox3.Location = New System.Drawing.Point(253, 11)
         Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(336, 21)
+        Me.TextBox3.Size = New System.Drawing.Size(592, 21)
         Me.TextBox3.TabIndex = 2
         '
         'GenericKeyPanel
@@ -2001,7 +2234,7 @@ Partial Class NewUnattendWiz
         Me.GenericKeyPanel.Controls.Add(Me.Label27)
         Me.GenericKeyPanel.Location = New System.Drawing.Point(85, 96)
         Me.GenericKeyPanel.Name = "GenericKeyPanel"
-        Me.GenericKeyPanel.Size = New System.Drawing.Size(601, 100)
+        Me.GenericKeyPanel.Size = New System.Drawing.Size(857, 100)
         Me.GenericKeyPanel.TabIndex = 7
         '
         'Label29
@@ -2020,7 +2253,7 @@ Partial Class NewUnattendWiz
         Me.TextBox2.Location = New System.Drawing.Point(262, 35)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.ReadOnly = True
-        Me.TextBox2.Size = New System.Drawing.Size(327, 21)
+        Me.TextBox2.Size = New System.Drawing.Size(583, 21)
         Me.TextBox2.TabIndex = 2
         '
         'ComboBox6
@@ -2028,10 +2261,10 @@ Partial Class NewUnattendWiz
         Me.ComboBox6.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ComboBox6.FormattingEnabled = True
-        Me.ComboBox6.Items.AddRange(New Object() {"Education", "Education N", "Home", "Home N", "Home Single Language", "Pro", "Pro Education", "Pro Education N", "Pro for Workstations", "Pro N", "Pro N for Workstations"})
+        Me.ComboBox6.Items.AddRange(New Object() {"Education", "Education N", "Home", "Home N", "Home Single Language", "Pro", "Pro Education", "Pro Education N", "Pro for Workstations", "Pro N", "Pro N for Workstations", "Enterprise"})
         Me.ComboBox6.Location = New System.Drawing.Point(262, 8)
         Me.ComboBox6.Name = "ComboBox6"
-        Me.ComboBox6.Size = New System.Drawing.Size(327, 21)
+        Me.ComboBox6.Size = New System.Drawing.Size(583, 21)
         Me.ComboBox6.TabIndex = 1
         '
         'Label28
@@ -2093,7 +2326,7 @@ Partial Class NewUnattendWiz
         Me.DiskConfigurationPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DiskConfigurationPanel.Location = New System.Drawing.Point(0, 0)
         Me.DiskConfigurationPanel.Name = "DiskConfigurationPanel"
-        Me.DiskConfigurationPanel.Size = New System.Drawing.Size(752, 449)
+        Me.DiskConfigurationPanel.Size = New System.Drawing.Size(1008, 569)
         Me.DiskConfigurationPanel.TabIndex = 4
         '
         'ManualPartPanel
@@ -2112,7 +2345,7 @@ Partial Class NewUnattendWiz
         Me.ManualPartPanel.Location = New System.Drawing.Point(65, 71)
         Me.ManualPartPanel.Name = "ManualPartPanel"
         Me.ManualPartPanel.Padding = New System.Windows.Forms.Padding(4, 6, 0, 0)
-        Me.ManualPartPanel.Size = New System.Drawing.Size(622, 300)
+        Me.ManualPartPanel.Size = New System.Drawing.Size(878, 420)
         Me.ManualPartPanel.TabIndex = 8
         Me.ManualPartPanel.WrapContents = False
         '
@@ -2462,7 +2695,7 @@ Partial Class NewUnattendWiz
         Me.Label20.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(81, 399)
+        Me.Label20.Location = New System.Drawing.Point(81, 519)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(524, 13)
         Me.Label20.TabIndex = 7
@@ -2475,7 +2708,7 @@ Partial Class NewUnattendWiz
         Me.CheckBox4.AutoSize = True
         Me.CheckBox4.Checked = True
         Me.CheckBox4.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBox4.Location = New System.Drawing.Point(65, 377)
+        Me.CheckBox4.Location = New System.Drawing.Point(65, 497)
         Me.CheckBox4.Name = "CheckBox4"
         Me.CheckBox4.Size = New System.Drawing.Size(276, 17)
         Me.CheckBox4.TabIndex = 5
@@ -2501,7 +2734,7 @@ Partial Class NewUnattendWiz
         Me.TimeZonePanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TimeZonePanel.Location = New System.Drawing.Point(0, 0)
         Me.TimeZonePanel.Name = "TimeZonePanel"
-        Me.TimeZonePanel.Size = New System.Drawing.Size(752, 449)
+        Me.TimeZonePanel.Size = New System.Drawing.Size(1008, 569)
         Me.TimeZonePanel.TabIndex = 3
         '
         'TimeZoneSettings
@@ -2517,7 +2750,7 @@ Partial Class NewUnattendWiz
         Me.TimeZoneSettings.Enabled = False
         Me.TimeZoneSettings.Location = New System.Drawing.Point(86, 123)
         Me.TimeZoneSettings.Name = "TimeZoneSettings"
-        Me.TimeZoneSettings.Size = New System.Drawing.Size(621, 136)
+        Me.TimeZoneSettings.Size = New System.Drawing.Size(877, 136)
         Me.TimeZoneSettings.TabIndex = 5
         '
         'CurrentTimeSelTZ
@@ -2563,7 +2796,7 @@ Partial Class NewUnattendWiz
         Me.ComboBox5.FormattingEnabled = True
         Me.ComboBox5.Location = New System.Drawing.Point(99, 16)
         Me.ComboBox5.Name = "ComboBox5"
-        Me.ComboBox5.Size = New System.Drawing.Size(502, 21)
+        Me.ComboBox5.Size = New System.Drawing.Size(758, 21)
         Me.ComboBox5.TabIndex = 1
         '
         'Label17
@@ -2622,7 +2855,7 @@ Partial Class NewUnattendWiz
         Me.SysConfigPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SysConfigPanel.Location = New System.Drawing.Point(0, 0)
         Me.SysConfigPanel.Name = "SysConfigPanel"
-        Me.SysConfigPanel.Size = New System.Drawing.Size(752, 449)
+        Me.SysConfigPanel.Size = New System.Drawing.Size(1008, 569)
         Me.SysConfigPanel.TabIndex = 2
         '
         'CheckBox3
@@ -2644,7 +2877,7 @@ Partial Class NewUnattendWiz
         Me.Label15.AutoEllipsis = True
         Me.Label15.Location = New System.Drawing.Point(71, 410)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(616, 33)
+        Me.Label15.Size = New System.Drawing.Size(872, 33)
         Me.Label15.TabIndex = 1
         Me.Label15.Text = "You can set a different computer name at any time in the system settings"
         '
@@ -2652,13 +2885,25 @@ Partial Class NewUnattendWiz
         '
         Me.ComputerNamePanel.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ComputerNamePanel.Controls.Add(Me.Button3)
         Me.ComputerNamePanel.Controls.Add(Me.TextBox1)
         Me.ComputerNamePanel.Controls.Add(Me.Label16)
         Me.ComputerNamePanel.Enabled = False
         Me.ComputerNamePanel.Location = New System.Drawing.Point(61, 362)
         Me.ComputerNamePanel.Name = "ComputerNamePanel"
-        Me.ComputerNamePanel.Size = New System.Drawing.Size(626, 39)
+        Me.ComputerNamePanel.Size = New System.Drawing.Size(882, 39)
         Me.ComputerNamePanel.TabIndex = 7
+        '
+        'Button3
+        '
+        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.Button3.Location = New System.Drawing.Point(726, 8)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(152, 23)
+        Me.Button3.TabIndex = 3
+        Me.Button3.Text = "Get computer name"
+        Me.Button3.UseVisualStyleBackColor = True
         '
         'TextBox1
         '
@@ -2667,7 +2912,7 @@ Partial Class NewUnattendWiz
         Me.TextBox1.Location = New System.Drawing.Point(124, 9)
         Me.TextBox1.MaxLength = 15
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(489, 21)
+        Me.TextBox1.Size = New System.Drawing.Size(596, 21)
         Me.TextBox1.TabIndex = 2
         '
         'Label16
@@ -2688,7 +2933,7 @@ Partial Class NewUnattendWiz
         Me.WinSVSettingsPanel.Controls.Add(Me.CheckBox1)
         Me.WinSVSettingsPanel.Location = New System.Drawing.Point(182, 196)
         Me.WinSVSettingsPanel.Name = "WinSVSettingsPanel"
-        Me.WinSVSettingsPanel.Size = New System.Drawing.Size(505, 131)
+        Me.WinSVSettingsPanel.Size = New System.Drawing.Size(761, 131)
         Me.WinSVSettingsPanel.TabIndex = 7
         '
         'Label14
@@ -2698,7 +2943,7 @@ Partial Class NewUnattendWiz
         Me.Label14.AutoEllipsis = True
         Me.Label14.Location = New System.Drawing.Point(28, 54)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(464, 70)
+        Me.Label14.Size = New System.Drawing.Size(720, 70)
         Me.Label14.TabIndex = 1
         Me.Label14.Text = "Check this option only if the target system does not have any network capabilitie" & _
     "s. You can configure local users in the User Accounts section"
@@ -2739,7 +2984,7 @@ Partial Class NewUnattendWiz
         Me.Label12.AutoEllipsis = True
         Me.Label12.Location = New System.Drawing.Point(182, 158)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(505, 32)
+        Me.Label12.Size = New System.Drawing.Size(761, 32)
         Me.Label12.TabIndex = 5
         Me.Label12.Text = "Please select the system architecture that is supported by the target Windows ima" & _
     "ge to apply"
@@ -2752,7 +2997,7 @@ Partial Class NewUnattendWiz
         Me.ListBox1.Items.AddRange(New Object() {"x86 (Desktop 32-Bit)", "x64 (Desktop 64-Bit)", "ARM64 (Windows on ARM)"})
         Me.ListBox1.Location = New System.Drawing.Point(182, 82)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(505, 69)
+        Me.ListBox1.Size = New System.Drawing.Size(761, 69)
         Me.ListBox1.TabIndex = 4
         '
         'Label11
@@ -2784,7 +3029,7 @@ Partial Class NewUnattendWiz
         Me.RegionalSettingsPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.RegionalSettingsPanel.Location = New System.Drawing.Point(0, 0)
         Me.RegionalSettingsPanel.Name = "RegionalSettingsPanel"
-        Me.RegionalSettingsPanel.Size = New System.Drawing.Size(752, 449)
+        Me.RegionalSettingsPanel.Size = New System.Drawing.Size(1008, 569)
         Me.RegionalSettingsPanel.TabIndex = 1
         '
         'Label10
@@ -2812,7 +3057,7 @@ Partial Class NewUnattendWiz
         Me.RegionalSettings.Controls.Add(Me.ComboBox1)
         Me.RegionalSettings.Location = New System.Drawing.Point(85, 100)
         Me.RegionalSettings.Name = "RegionalSettings"
-        Me.RegionalSettings.Size = New System.Drawing.Size(635, 159)
+        Me.RegionalSettings.Size = New System.Drawing.Size(891, 159)
         Me.RegionalSettings.TabIndex = 3
         '
         'Button1
@@ -2820,7 +3065,7 @@ Partial Class NewUnattendWiz
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.Enabled = False
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.Button1.Location = New System.Drawing.Point(485, 124)
+        Me.Button1.Location = New System.Drawing.Point(741, 124)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(137, 23)
         Me.Button1.TabIndex = 2
@@ -2874,7 +3119,7 @@ Partial Class NewUnattendWiz
         Me.ComboBox4.FormattingEnabled = True
         Me.ComboBox4.Location = New System.Drawing.Point(278, 96)
         Me.ComboBox4.Name = "ComboBox4"
-        Me.ComboBox4.Size = New System.Drawing.Size(345, 21)
+        Me.ComboBox4.Size = New System.Drawing.Size(601, 21)
         Me.ComboBox4.TabIndex = 0
         Me.ComboBox4.Text = "United States"
         '
@@ -2885,7 +3130,7 @@ Partial Class NewUnattendWiz
         Me.ComboBox3.FormattingEnabled = True
         Me.ComboBox3.Location = New System.Drawing.Point(278, 69)
         Me.ComboBox3.Name = "ComboBox3"
-        Me.ComboBox3.Size = New System.Drawing.Size(345, 21)
+        Me.ComboBox3.Size = New System.Drawing.Size(601, 21)
         Me.ComboBox3.TabIndex = 0
         Me.ComboBox3.Text = "US"
         '
@@ -2896,7 +3141,7 @@ Partial Class NewUnattendWiz
         Me.ComboBox2.FormattingEnabled = True
         Me.ComboBox2.Location = New System.Drawing.Point(278, 42)
         Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(345, 21)
+        Me.ComboBox2.Size = New System.Drawing.Size(601, 21)
         Me.ComboBox2.TabIndex = 0
         Me.ComboBox2.Text = "English (United States)"
         '
@@ -2907,7 +3152,7 @@ Partial Class NewUnattendWiz
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(278, 15)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(345, 21)
+        Me.ComboBox1.Size = New System.Drawing.Size(601, 21)
         Me.ComboBox1.TabIndex = 0
         Me.ComboBox1.Text = "English"
         '
@@ -2951,7 +3196,7 @@ Partial Class NewUnattendWiz
         Me.WelcomePanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.WelcomePanel.Location = New System.Drawing.Point(0, 0)
         Me.WelcomePanel.Name = "WelcomePanel"
-        Me.WelcomePanel.Size = New System.Drawing.Size(752, 449)
+        Me.WelcomePanel.Size = New System.Drawing.Size(1008, 569)
         Me.WelcomePanel.TabIndex = 0
         '
         'LinkLabel1
@@ -2960,7 +3205,7 @@ Partial Class NewUnattendWiz
         Me.LinkLabel1.AutoEllipsis = True
         Me.LinkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
         Me.LinkLabel1.LinkColor = System.Drawing.Color.DodgerBlue
-        Me.LinkLabel1.Location = New System.Drawing.Point(77, 339)
+        Me.LinkLabel1.Location = New System.Drawing.Point(205, 399)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(436, 13)
         Me.LinkLabel1.TabIndex = 2
@@ -2982,7 +3227,7 @@ Partial Class NewUnattendWiz
         Me.WelcomeDesc.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.WelcomeDesc.AutoEllipsis = True
         Me.WelcomeDesc.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.WelcomeDesc.Location = New System.Drawing.Point(78, 86)
+        Me.WelcomeDesc.Location = New System.Drawing.Point(206, 146)
         Me.WelcomeDesc.Name = "WelcomeDesc"
         Me.WelcomeDesc.Size = New System.Drawing.Size(596, 188)
         Me.WelcomeDesc.TabIndex = 0
@@ -3007,7 +3252,7 @@ Partial Class NewUnattendWiz
         Me.EditorPanelContainer.Dock = System.Windows.Forms.DockStyle.Fill
         Me.EditorPanelContainer.Location = New System.Drawing.Point(256, 72)
         Me.EditorPanelContainer.Name = "EditorPanelContainer"
-        Me.EditorPanelContainer.Size = New System.Drawing.Size(752, 449)
+        Me.EditorPanelContainer.Size = New System.Drawing.Size(1008, 569)
         Me.EditorPanelContainer.TabIndex = 1
         Me.EditorPanelContainer.Visible = False
         '
@@ -3018,7 +3263,7 @@ Partial Class NewUnattendWiz
         Me.Scintilla1.LexerName = Nothing
         Me.Scintilla1.Location = New System.Drawing.Point(0, 28)
         Me.Scintilla1.Name = "Scintilla1"
-        Me.Scintilla1.Size = New System.Drawing.Size(752, 421)
+        Me.Scintilla1.Size = New System.Drawing.Size(1008, 541)
         Me.Scintilla1.TabIndex = 2
         Me.Scintilla1.Text = "<?xml version=""1.0"" encoding=""utf-8""?>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "<unattend xmlns=""urn:schemas-microsoft-co" & _
     "m:unattend"">" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "</unattend>"
@@ -3034,7 +3279,7 @@ Partial Class NewUnattendWiz
         Me.DarkToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.DarkToolStrip1.Name = "DarkToolStrip1"
         Me.DarkToolStrip1.Padding = New System.Windows.Forms.Padding(5, 0, 1, 0)
-        Me.DarkToolStrip1.Size = New System.Drawing.Size(752, 28)
+        Me.DarkToolStrip1.Size = New System.Drawing.Size(1008, 28)
         Me.DarkToolStrip1.TabIndex = 3
         Me.DarkToolStrip1.Text = "DarkToolStrip1"
         '
@@ -3144,7 +3389,7 @@ Partial Class NewUnattendWiz
         Me.HeaderPanel.Dock = System.Windows.Forms.DockStyle.Top
         Me.HeaderPanel.Location = New System.Drawing.Point(256, 0)
         Me.HeaderPanel.Name = "HeaderPanel"
-        Me.HeaderPanel.Size = New System.Drawing.Size(752, 72)
+        Me.HeaderPanel.Size = New System.Drawing.Size(1008, 72)
         Me.HeaderPanel.TabIndex = 2
         '
         'Label4
@@ -3154,7 +3399,7 @@ Partial Class NewUnattendWiz
         Me.Label4.AutoEllipsis = True
         Me.Label4.Location = New System.Drawing.Point(52, 41)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(672, 13)
+        Me.Label4.Size = New System.Drawing.Size(928, 13)
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "If you haven't created unattended answer files before, use this wizard to create " & _
     "one."
@@ -3183,9 +3428,9 @@ Partial Class NewUnattendWiz
         '
         Me.FooterContainer.Controls.Add(Me.ExpressPanelFooter)
         Me.FooterContainer.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.FooterContainer.Location = New System.Drawing.Point(256, 521)
+        Me.FooterContainer.Location = New System.Drawing.Point(256, 641)
         Me.FooterContainer.Name = "FooterContainer"
-        Me.FooterContainer.Size = New System.Drawing.Size(752, 40)
+        Me.FooterContainer.Size = New System.Drawing.Size(1008, 40)
         Me.FooterContainer.TabIndex = 3
         '
         'ExpressPanelFooter
@@ -3194,7 +3439,7 @@ Partial Class NewUnattendWiz
         Me.ExpressPanelFooter.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ExpressPanelFooter.Location = New System.Drawing.Point(0, 0)
         Me.ExpressPanelFooter.Name = "ExpressPanelFooter"
-        Me.ExpressPanelFooter.Size = New System.Drawing.Size(752, 40)
+        Me.ExpressPanelFooter.Size = New System.Drawing.Size(1008, 40)
         Me.ExpressPanelFooter.TabIndex = 0
         '
         'TableLayoutPanel1
@@ -3209,7 +3454,7 @@ Partial Class NewUnattendWiz
         Me.TableLayoutPanel1.Controls.Add(Me.Next_Button, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Cancel_Button, 2, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Help_Button, 3, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(458, 6)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(714, 6)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
@@ -3298,22 +3543,11 @@ Partial Class NewUnattendWiz
         '
         Me.EditorModeSFD.Filter = "Answer files|*.xml"
         '
-        'UserListOverviewLabel
-        '
-        Me.UserListOverviewLabel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.UserListOverviewLabel.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.UserListOverviewLabel.Location = New System.Drawing.Point(4, 1)
-        Me.UserListOverviewLabel.Name = "UserListOverviewLabel"
-        Me.UserListOverviewLabel.Size = New System.Drawing.Size(141, 24)
-        Me.UserListOverviewLabel.TabIndex = 25
-        Me.UserListOverviewLabel.Text = "User accounts:"
-        Me.UserListOverviewLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
         'NewUnattendWiz
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1008, 561)
+        Me.ClientSize = New System.Drawing.Size(1264, 681)
         Me.Controls.Add(Me.ExpressPanelContainer)
         Me.Controls.Add(Me.EditorPanelContainer)
         Me.Controls.Add(Me.HeaderPanel)
@@ -3321,9 +3555,8 @@ Partial Class NewUnattendWiz
         Me.Controls.Add(Me.SidePanel)
         Me.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MinimumSize = New System.Drawing.Size(1024, 600)
+        Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "NewUnattendWiz"
-        Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Unattended answer file creation wizard"
         Me.SidePanel.ResumeLayout(False)
@@ -3344,6 +3577,16 @@ Partial Class NewUnattendWiz
         Me.FinalReviewPanel.ResumeLayout(False)
         Me.FinalReviewPanel.PerformLayout()
         Me.ComponentPanel.ResumeLayout(False)
+        Me.ComponentPanel.PerformLayout()
+        Me.SystemComponentPanel.ResumeLayout(False)
+        Me.SplitContainer2.Panel1.ResumeLayout(False)
+        Me.SplitContainer2.Panel2.ResumeLayout(False)
+        CType(Me.SplitContainer2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SplitContainer2.ResumeLayout(False)
+        Me.PassContainerPanel.ResumeLayout(False)
+        Me.PassConfigurationPanel.ResumeLayout(False)
+        Me.PassConfigurationPanel.PerformLayout()
+        Me.NoComponentSelectedPanel.ResumeLayout(False)
         Me.PostInstallPanel.ResumeLayout(False)
         Me.PostInstallPanel.PerformLayout()
         Me.SystemTelemetryPanel.ResumeLayout(False)
@@ -3360,8 +3603,8 @@ Partial Class NewUnattendWiz
         Me.VirtualMachinePanel.PerformLayout()
         Me.VMProviderPanel.ResumeLayout(False)
         Me.VMProviderPanel.PerformLayout()
-        Me.AccountLockdownPanel.ResumeLayout(False)
-        Me.AccountLockdownPanel.PerformLayout()
+        Me.AccountLockoutPanel.ResumeLayout(False)
+        Me.AccountLockoutPanel.PerformLayout()
         Me.EnabledAccountLockdownPanel.ResumeLayout(False)
         Me.EnabledAccountLockdownPanel.PerformLayout()
         Me.AccountLockdownParametersPanel.ResumeLayout(False)
@@ -3629,7 +3872,7 @@ Partial Class NewUnattendWiz
     Friend WithEvents RadioButton18 As System.Windows.Forms.RadioButton
     Friend WithEvents RadioButton17 As System.Windows.Forms.RadioButton
     Friend WithEvents PWExpirationHeader As System.Windows.Forms.Label
-    Friend WithEvents AccountLockdownPanel As System.Windows.Forms.Panel
+    Friend WithEvents AccountLockoutPanel As System.Windows.Forms.Panel
     Friend WithEvents Label44 As System.Windows.Forms.Label
     Friend WithEvents EnabledAccountLockdownPanel As System.Windows.Forms.Panel
     Friend WithEvents AccountLockdownParametersPanel As System.Windows.Forms.Panel
@@ -3697,8 +3940,6 @@ Partial Class NewUnattendWiz
     Friend WithEvents FinishPanel As System.Windows.Forms.Panel
     Friend WithEvents Label58 As System.Windows.Forms.Label
     Friend WithEvents FinishHeader As System.Windows.Forms.Label
-    Friend WithEvents LinkLabel7 As System.Windows.Forms.LinkLabel
-    Friend WithEvents LinkLabel6 As System.Windows.Forms.LinkLabel
     Friend WithEvents LinkLabel4 As System.Windows.Forms.LinkLabel
     Friend WithEvents LinkLabel3 As System.Windows.Forms.LinkLabel
     Friend WithEvents LinkLabel2 As System.Windows.Forms.LinkLabel
@@ -3709,4 +3950,25 @@ Partial Class NewUnattendWiz
     Friend WithEvents EditorModeOFD As System.Windows.Forms.OpenFileDialog
     Friend WithEvents EditorModeSFD As System.Windows.Forms.SaveFileDialog
     Friend WithEvents UserListOverviewLabel As System.Windows.Forms.Label
+    Friend WithEvents SystemComponentPanel As Panel
+    Friend WithEvents SplitContainer2 As System.Windows.Forms.SplitContainer
+    Friend WithEvents PassContainerPanel As System.Windows.Forms.Panel
+    Friend WithEvents PassConfigurationPanel As System.Windows.Forms.Panel
+    Friend WithEvents oobeSystem As System.Windows.Forms.CheckBox
+    Friend WithEvents auditUser As System.Windows.Forms.CheckBox
+    Friend WithEvents auditSystem As System.Windows.Forms.CheckBox
+    Friend WithEvents generalize As System.Windows.Forms.CheckBox
+    Friend WithEvents specialize As System.Windows.Forms.CheckBox
+    Friend WithEvents offlineServicing As System.Windows.Forms.CheckBox
+    Friend WithEvents windowsPE As System.Windows.Forms.CheckBox
+    Friend WithEvents Label61 As System.Windows.Forms.Label
+    Friend WithEvents NoComponentSelectedPanel As System.Windows.Forms.Panel
+    Friend WithEvents Label60 As System.Windows.Forms.Label
+    Friend WithEvents ListBox2 As System.Windows.Forms.ListBox
+    Friend WithEvents LinkLabel5 As System.Windows.Forms.LinkLabel
+    Friend WithEvents LinkLabel6 As System.Windows.Forms.LinkLabel
+    Friend WithEvents LinkLabel7 As System.Windows.Forms.LinkLabel
+    Friend WithEvents CheckBox18 As System.Windows.Forms.CheckBox
+    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents CNameTTip As System.Windows.Forms.ToolTip
 End Class

@@ -3,7 +3,7 @@
 #                                         .'^""""""^.
 #      '^`'.                            '^"""""""^.
 #     .^"""""`'                       .^"""""""^.                ---------------------------------------------------------
-#      .^""""""`                      ^"""""""`                  | DISMTools 0.5.1                                       |
+#      .^""""""`                      ^"""""""`                  | DISMTools 0.6                                         |
 #       ."""""""^.                   `""""""""'           `,`    | The connected place for Windows system administration |
 #         '`""""""`.                 """""""""^         `,,,"    ---------------------------------------------------------
 #            '^"""""`.               ^""""""""""'.   .`,,,,,^    | Preinstallation Environment (PE) helper               |
@@ -70,7 +70,7 @@ function Start-PEGeneration
     #>
     $mountDirectory = ""
     $architecture = [PE_Arch]::($arch)
-    $version = "0.5.1"
+    $version = "0.6"
     Write-Host "DISMTools $version - Preinstallation Environment Helper"
     Write-Host "(c) 2024. CodingWonders Software"
     Write-Host "-----------------------------------------------------------"
@@ -1515,7 +1515,7 @@ function Show-Timeout {
 function Start-ProjectDevelopment {
     $mountDirectory = ""
     $architecture = [PE_Arch]::($testArch)
-    $version = "0.5.1"
+    $version = "0.6"
     $ESVer = "0.6"
     Write-Host "DISMTools $version - Preinstallation Environment Helper"
     Write-Host "(c) 2024. CodingWonders Software"
@@ -1631,6 +1631,8 @@ function Start-ProjectDevelopment {
                 Copy-Item -Path "$((Get-Location).Path)\files\diskpart\*.dp" -Destination "$((Get-Location).Path)\ISOTEMP\media\files\diskpart" -Verbose -Force -Recurse -Container -ErrorAction SilentlyContinue
                 New-Item -Path "$((Get-Location).Path)\ISOTEMP\media\Tools\DIM" -ItemType Directory | Out-Null
                 Copy-Item -Path "$((Get-Location).Path)\tools\DIM\*" -Destination "$((Get-Location).Path)\ISOTEMP\media\Tools\DIM" -Verbose -Force -Recurse -Container -ErrorAction SilentlyContinue
+                New-Item -Path "$((Get-Location).Path)\ISOTEMP\media\Tools\RestartDialog" -ItemType Directory | Out-Null
+                Copy-Item -Path "$((Get-Location).Path)\tools\RestartDialog\*" -Destination "$((Get-Location).Path)\ISOTEMP\media\Tools\RestartDialog" -Verbose -Force -Recurse -Container -ErrorAction SilentlyContinue
                 Write-Host "Deleting temporary files..."
                 Remove-Item -Path "$((Get-Location).Path)\ISOTEMP\OCs" -Recurse -Force -ErrorAction SilentlyContinue
                 if ($mountDirectory.StartsWith("$env:TEMP"))
@@ -1645,7 +1647,7 @@ function Start-ProjectDevelopment {
                 {
                     Write-Host "Temporary files haven't been deleted successfully"
                 }
-                Write-Host "The ISO file structure has been successfully created. DISMTools will finish preparing the project after 5 seconds."
+                Write-Host "The file structure has been successfully created. DISMTools will finish preparing the project after 5 seconds."
                 Start-Sleep -Seconds 5
                 Copy-Item -Path "$((Get-Location).Path)\ISOTEMP\*" -Destination "$targetPath\ISORoot" -Recurse -Force -Verbose -ErrorAction SilentlyContinue
                 if ($?)

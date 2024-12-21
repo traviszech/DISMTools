@@ -1,4 +1,4 @@
-![Product image](https://github.com/CodingWonders/DISMTools/assets/101426328/84dda638-1475-48c8-8d90-39a85115cc20)
+![Product image](https://github.com/CodingWonders/DISMTools/blob/dt_preview/res/product_overview.png)
 
 <!-- Tags (powered by Shields.io) -->
 
@@ -34,7 +34,7 @@ Inspired by Visual Studio, DISMTools is the first project-based GUI. Projects st
 DISMTools projects are also tiny when you create them, and contain a structure that is easy to navigate.
 
 <p align="center">
-	<img src="https://github.com/CodingWonders/DISMTools/assets/101426328/4c39c657-30fa-4cb7-99eb-c502574efc00" />
+	<img src="https://github.com/CodingWonders/DISMTools/blob/dt_preview/res/project_sizes.png" />
 </p>
 
 The program also supports setting and removing file associations for projects with the click of a button (only on portable installations), so you can load your projects instantly by double-clicking them. You can also **copy your installed deployment tools** to your projects, allowing you to use those anywhere you take them.
@@ -51,53 +51,65 @@ Unlike other user interfaces for DISM that use either the DISM API or the DISM e
 
 DISMTools isn't just a front-end for DISM, but an advanced one. As you perform tasks with your images and installations, you're presented with rich information and functionality. Here are some examples:
 
-- **Rich information during AppX package addition.** When adding an AppX package, you'll see rich information and, in most cases, the main Store logo asset:
+- **Rich information during AppX package addition.** When adding an AppX package, you'll see rich information and, in most cases, the main Store logo asset. You can also add encrypted application packages to active installations, and configure stub package preferences, for full AppX package management:
 
 <p align="center">
-	<img src="https://github.com/CodingWonders/DISMTools/assets/101426328/a45c5b56-e5a6-40c5-a2f3-37677ce80405" />
+	<img src="https://github.com/CodingWonders/DISMTools/blob/dt_preview/res/rich_appx_info.gif" />
 </p>
 
 - **Download content from App Installer packages automatically.** Have an App Installer package? No problem. Add it, and DISMTools will download the main package and use it automatically:
 
 <p align="center">
-	<img src="https://github.com/CodingWonders/DISMTools/assets/101426328/54b561f7-cc62-4b6f-8683-73ca382af4d2" />
+	<img src="https://github.com/CodingWonders/DISMTools/blob/dt_preview/res/app_installer_downloader.png" />
 </p>
 
 - **Automatic detection of sources from Group Policy.** If you want to enable a feature, repair the component store of a Windows image, or add a capability, with a source defined in the Group Policy; you can easily use it:
 
 <p align="center">
-	<img src="https://github.com/CodingWonders/DISMTools/assets/101426328/8b2cbb41-dc82-4841-9cda-307a40619d64" />
-</p>
-
-<p align="center">
-	<img src="https://user-images.githubusercontent.com/101426328/230734474-358bbac8-2c2e-4a70-b382-9cc3283c0db8.gif" />
+	<img src="https://github.com/CodingWonders/DISMTools/blob/dt_preview/res/group_policy_caps.gif" />
 </p>
 
 - **Easily create configuration lists.** With the *DISM Configuration List Editor* you can quickly create your configuration list to exclude certain items during operations like capturing an image:
 
 <p align="center">
-	<img src="https://github.com/CodingWonders/DISMTools/assets/101426328/f82873b6-b59a-4e12-9682-1624872e6d30" />
+	<img src="https://github.com/CodingWonders/DISMTools/blob/dt_preview/res/config_list_editor.png" />
 </p>
 
 - **Quickly manage all your mounted images in one interface.** The mounted image manager lets you perform basic image management tasks with your mounted images:
 
 <p align="center">
-	<img src="https://github.com/CodingWonders/DISMTools/assets/101426328/a2e35a8b-7f7e-4b52-9366-c71de33ef9e2" />
+	<img src="https://github.com/CodingWonders/DISMTools/blob/dt_preview/res/mounted_image_manager.png" />
 </p>
 
-- **Generate and print image information easily.** With image information reports, you can save the information of one area or all areas of the Windows image you're servicing for future reference:
+You can also get and save image file information using the manager:
 
 <p align="center">
-	<img src="https://github.com/CodingWonders/DISMTools/assets/101426328/d668f94e-0d39-49bb-b98f-ec045fed725b" />
+	<img src="https://github.com/CodingWonders/DISMTools/blob/dt_preview/res/img_info_quick_action.png" />
 </p>
 
-- **Quickly test your Windows images.** With the ISO creation wizard, you can test your Windows image quickly and easily:
+<p align="center">
+	<img src="https://github.com/CodingWonders/DISMTools/blob/dt_preview/res/img_info_saver_quick_action.png" />
+</p>
+
+- **Generate and print image information easily.** With image information reports, you can save the information of one area or all areas of the Windows image you're servicing for future reference as a Markdown file. You can also see your Markdown report in HTML form thanks to Markdig:
 
 <p align="center">
-	<img src="https://github.com/CodingWonders/DISMTools/assets/101426328/102d829d-aeb1-4697-9225-27775bea2b61" />
+	<img src="https://github.com/CodingWonders/DISMTools/blob/dt_preview/res/info_report_viewer.png" />
+</p>
+
+- **Generate unattended answer files with ease.** Using the unattended answer file creation wizard, powered by the answer file generator from Christoph Schneegans, you can create your files by simply following the pages:
+
+<p align="center">
+	<img src="https://github.com/CodingWonders/DISMTools/blob/dt_preview/res/autounattend_wizard.png" />
+</p>
+
+- **Quickly test your Windows images.** With the ISO creation wizard, you can test your Windows image quickly and easily. You can also use your unattended answer files to test them, or to speed up the installation process by removing tedious steps from the out-of-box experience:
+
+<p align="center">
+	<img src="https://github.com/CodingWonders/DISMTools/blob/dt_preview/res/iso_creator.png" />
 </p>
 <p align="center">
-	<img src="https://github.com/CodingWonders/DISMTools/assets/101426328/af2a2655-02de-4618-9423-30882303b424" />
+	<img src="https://github.com/CodingWonders/DISMTools/blob/dt_preview/res/iso_creator_installation.png" />
 </p>
 
 > [!NOTE]
@@ -180,7 +192,7 @@ This program is also 100% Free.
 
 <p align="center">
 	<img src="https://www.softpedia.com/_img/softpedia_100_free.png" />
-	<p align="center"><i>Last updated: August 3, 2024 (Roberto Zamfir)</i></p>
+	<p align="center"><i>Last updated: October 26, 2024 (Andrei Verdeanu)</i></p>
 </p>
 
 The [SourceForge project](https://sourceforge.net/projects/dismtools/) also keeps track of new releases in this repository, so you can download the latest releases from there as well.
@@ -191,7 +203,7 @@ DISMTools has been featured in news sites. Check them out if you're interested:
 
 - [DeskModder](https://www.deskmodder.de/blog/2024/06/24/dismtools-iso-oder-image-bearbeiten-in-neuer-stable-version-erschienen/)
 - [Computer BILD](https://www.computerbild.de/artikel/cb-Tipps-Windows-Windows-Media-Player-deinstallieren-31424181.html)
-- [PC-Welt](https://www.pcwelt.de/article/1110927/kommandozeilen-tools-per-maus-gui.html)
+- [PC World](https://www.pcworld.com/article/2430467/operating-command-line-tools-with-the-mouse-the-best-guis.html)
 
 ## Support this project
 
@@ -243,9 +255,9 @@ If you want to contribute to this project, you can do so in many ways:
 
 We continue the development of the next version in the Preview branch. To go to it, select "dt_preview" from the branch list. Commits are done every day, and new builds are released every 2 weeks.
 
-<!-- However, if you want to download the latest release AS SOON AS the project is built with new changes, you can download the [nightly installer](https://github.com/CodingWonders/DISMTools/raw/dt_pre_2483_relcndid/Installer/Nightly/dt_setup.exe). -->
+However, if you want to download the latest release AS SOON AS the project is built with new changes, you can download the [nightly installer](https://github.com/CodingWonders/dt-nightly-installers/raw/refs/heads/main/dt_pre_24122_relcndid/dt_setup.exe).
 
-<!-- **NOTE:** this branch contains release candidate builds of DISMTools 0.5.1, and will be deleted once this version gets published as a stable release -->
+<!-- **NOTE:** this branch contains release candidate builds of DISMTools 0.6, and will be deleted once this version gets published as a stable release -->
 
 ## Stay in touch
 

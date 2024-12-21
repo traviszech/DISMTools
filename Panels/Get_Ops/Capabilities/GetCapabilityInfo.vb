@@ -268,6 +268,7 @@ Public Class GetCapabilityInfoDlg
                     End While
                 End If
                 If MainForm.MountedImageDetectorBW.IsBusy Then
+                    MainForm.MountedImageDetectorBWRestarterTimer.Enabled = False
                     MainForm.MountedImageDetectorBW.CancelAsync()
                     While MainForm.MountedImageDetectorBW.IsBusy
                         Application.DoEvents()
@@ -470,11 +471,38 @@ Public Class GetCapabilityInfoDlg
         End If
     End Sub
 
-    Sub SearchCapabilities(sQuery As String)
+    Sub SearchCapabilities(sQuery As String, Optional capState As String = "")
+        Dim expectedCapabilityState As DismPackageFeatureState = DismPackageFeatureState.NotPresent
+        If capState <> "" Then
+            Select Case capState.ToLower()
+                Case "notpresent"
+                    expectedCapabilityState = DismPackageFeatureState.NotPresent
+                Case "uninstallpending"
+                    expectedCapabilityState = DismPackageFeatureState.UninstallPending
+                Case "uninstalled"
+                    expectedCapabilityState = DismPackageFeatureState.Staged
+                Case "removed"
+                    expectedCapabilityState = DismPackageFeatureState.Removed
+                Case "resolved"
+                    expectedCapabilityState = DismPackageFeatureState.Resolved
+                Case "installed"
+                    expectedCapabilityState = DismPackageFeatureState.Installed
+                Case "installpending"
+                    expectedCapabilityState = DismPackageFeatureState.InstallPending
+                Case "superseded"
+                    expectedCapabilityState = DismPackageFeatureState.Superseded
+                Case "partiallyinstalled"
+                    expectedCapabilityState = DismPackageFeatureState.PartiallyInstalled
+            End Select
+        End If
         If InstalledCapabilityInfo.Count > 0 Then
             For Each InstalledCapability As DismCapability In InstalledCapabilityInfo
                 If InstalledCapability.Name.ToLower().Contains(sQuery.ToLower()) Then
-                    ListView1.Items.Add(New ListViewItem(New String() {InstalledCapability.Name, Casters.CastDismPackageState(InstalledCapability.State, True)}))
+                    If capState <> "" AndAlso InstalledCapability.State = expectedCapabilityState Then
+                        ListView1.Items.Add(New ListViewItem(New String() {InstalledCapability.Name, Casters.CastDismPackageState(InstalledCapability.State, True)}))
+                    ElseIf capState = "" Then
+                        ListView1.Items.Add(New ListViewItem(New String() {InstalledCapability.Name, Casters.CastDismPackageState(InstalledCapability.State, True)}))
+                    End If
                 End If
             Next
         End If
@@ -483,7 +511,12 @@ Public Class GetCapabilityInfoDlg
     Private Sub SearchBox1_TextChanged(sender As Object, e As EventArgs) Handles SearchBox1.TextChanged
         ListView1.Items.Clear()
         If SearchBox1.Text <> "" Then
-            SearchCapabilities(SearchBox1.Text)
+            If SearchBox1.Text.ToLower().Contains("state:") Then
+                Dim state As String = SearchBox1.Text.Substring(SearchBox1.Text.IndexOf("state:") + "state:".Length).Trim()
+                SearchCapabilities(SearchBox1.Text.Replace("state:" & state, "").Trim(), state)
+            Else
+                SearchCapabilities(SearchBox1.Text)
+            End If
         Else
             For Each InstalledCapability As DismCapability In InstalledCapabilityInfo
                 ListView1.Items.Add(New ListViewItem(New String() {InstalledCapability.Name, Casters.CastDismPackageState(InstalledCapability.State, True)}))

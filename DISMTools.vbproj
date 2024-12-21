@@ -77,30 +77,112 @@
     <Reference Include="DarkUI, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\DarkUI.2.0.2\lib\DarkUI.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Dism, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5bba90053b345501, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Dism.3.1.0\lib\net40\Microsoft.Dism.dll</HintPath>
+    <Reference Include="Markdig, Version=0.38.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Markdig.0.38.0\lib\net462\Markdig.dll</HintPath>
     </Reference>
-    <Reference Include="Scintilla.NET, Version=5.6.2.0, Culture=neutral, PublicKeyToken=0221e70ba618311e, processorArchitecture=MSIL">
-      <HintPath>packages\Scintilla5.NET.5.6.2\lib\net462\Scintilla.NET.dll</HintPath>
+    <Reference Include="Microsoft.Dism, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5bba90053b345501, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Dism.3.2.0\lib\net40\Microsoft.Dism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Core, Version=8.0.6.0, Culture=neutral, PublicKeyToken=8afb38e9204fc0a9, processorArchitecture=MSIL">
+      <HintPath>packages\WindowsAPICodePack.8.0.6\lib\net48\Microsoft.WindowsAPICodePack.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ExtendedLinguisticServices, Version=8.0.6.0, Culture=neutral, PublicKeyToken=8afb38e9204fc0a9, processorArchitecture=MSIL">
+      <HintPath>packages\WindowsAPICodePack.8.0.6\lib\net48\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Sensors, Version=8.0.6.0, Culture=neutral, PublicKeyToken=8afb38e9204fc0a9, processorArchitecture=MSIL">
+      <HintPath>packages\WindowsAPICodePack.8.0.6\lib\net48\Microsoft.WindowsAPICodePack.Sensors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=8.0.6.0, Culture=neutral, PublicKeyToken=8afb38e9204fc0a9, processorArchitecture=MSIL">
+      <HintPath>packages\WindowsAPICodePack.8.0.6\lib\net48\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=8.0.6.0, Culture=neutral, PublicKeyToken=8afb38e9204fc0a9, processorArchitecture=MSIL">
+      <HintPath>packages\WindowsAPICodePack.8.0.6\lib\net48\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Scintilla.NET, Version=5.6.4.0, Culture=neutral, PublicKeyToken=0221e70ba618311e, processorArchitecture=MSIL">
+      <HintPath>packages\Scintilla5.NET.5.6.4\lib\net462\Scintilla.NET.dll</HintPath>
     </Reference>
     <Reference Include="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Configuration" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Design" />
+    <Reference Include="System.Design">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Management">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.ServiceModel">
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\WindowsAPICodePack.8.0.6\lib\net48\System.Windows.Forms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -114,6 +196,13 @@
     </Reference>
     <Reference Include="WeifenLuo.WinFormsUI.Docking.ThemeVS2012, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
       <HintPath>packages\DockPanelSuite.ThemeVS2012.3.1.1\lib\net40\WeifenLuo.WinFormsUI.Docking.ThemeVS2012.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsFormsIntegration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\WindowsAPICodePack.8.0.6\lib\net48\WindowsFormsIntegration.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +231,8 @@
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="Elements\AppxPackage.vb" />
+    <Compile Include="Elements\AutoUnattend\Components\Component.vb" />
+    <Compile Include="Elements\AutoUnattend\Components\Pass.vb" />
     <Compile Include="Elements\AutoUnattend\DiskConfig\DiskConfiguration.vb" />
     <Compile Include="Elements\AutoUnattend\Localization\GeoId.vb" />
     <Compile Include="Elements\AutoUnattend\Localization\ImageLanguage.vb" />
@@ -558,6 +649,12 @@
     <Compile Include="Panels\Img_Ops\ProvisioningPkgs\AddProvisioningPkg.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Panels\Img_Ops\Registry\RegistryControlPanel.Designer.vb">
+      <DependentUpon>RegistryControlPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\Img_Ops\Registry\RegistryControlPanel.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Panels\Img_Ops\Switch\ImgIndexSwitch.Designer.vb">
       <DependentUpon>ImgIndexSwitch.vb</DependentUpon>
     </Compile>
@@ -758,8 +855,11 @@
     </Compile>
     <Compile Include="Utilities\DriverSignerViewer.vb" />
     <Compile Include="Utilities\DT_Utils.vb" />
+    <Compile Include="Utilities\DynaLog.vb" />
     <Compile Include="Utilities\ImageWatcher.vb" />
+    <Compile Include="Utilities\PlaybookDetector.vb" />
     <Compile Include="Utilities\PriReader.vb" />
+    <Compile Include="Utilities\TaskbarHelper.vb" />
     <Compile Include="Videos\Video.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -963,6 +1063,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Panels\Img_Ops\ProvisioningPkgs\AddProvisioningPkg.resx">
       <DependentUpon>AddProvisioningPkg.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\Img_Ops\Registry\RegistryControlPanel.resx">
+      <DependentUpon>RegistryControlPanel.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Panels\Img_Ops\Switch\ImgIndexSwitch.resx">
       <DependentUpon>ImgIndexSwitch.vb</DependentUpon>
@@ -1744,7 +1847,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
     <PostBuildEvent>SET DELETELOGDIR="Yes"
-SET ISPREVIEW="Yes"
+SET ISPREVIEW="No"
 SET GEN_INSTALLER="Yes"
 SET COPY_DOCS="Yes"
 ECHO Generating program structure...
@@ -1833,6 +1936,8 @@ IF %25COPY_DOCS%25=="Yes" (
 )
 IF %25GEN_INSTALLER%25=="Yes" (
 	echo The technology used for creating the installer is subject to a license. Refer to the "LICENSE.TXT" file in the "$(SolutionDir)Installer" directory for more information
+	:: Workaround for DLLs not copying
+	"\Windows\system32\WindowsPowerShell\v1.0\powershell.exe" -executionpolicy bypass -noprofile -nologo -file "$(SolutionDir)CheckMissingDLLs.ps1"
 	echo Copying program files...
 	IF EXIST "$(SolutionDir)Installer\files" (rd "$(SolutionDir)Installer\files" /s /q)
 	IF NOT EXIST "$(SolutionDir)Installer\files" (md "$(SolutionDir)Installer\files")
@@ -1879,14 +1984,16 @@ IF EXIST videos.xml.old (del videos.xml.old)
 
 IF EXIST tools (
 	rd tools /s /q
-)</PreBuildEvent>
+)
+
+IF EXIST "report.html" (del "report.html")</PreBuildEvent>
   </PropertyGroup>
-  <Import Project="packages\Scintilla5.NET.5.6.2\build\scintilla5.net.targets" Condition="Exists('packages\Scintilla5.NET.5.6.2\build\scintilla5.net.targets')" />
+  <Import Project="packages\Scintilla5.NET.5.6.4\build\scintilla5.net.targets" Condition="Exists('packages\Scintilla5.NET.5.6.4\build\scintilla5.net.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\Scintilla5.NET.5.6.2\build\scintilla5.net.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Scintilla5.NET.5.6.2\build\scintilla5.net.targets'))" />
+    <Error Condition="!Exists('packages\Scintilla5.NET.5.6.4\build\scintilla5.net.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Scintilla5.NET.5.6.4\build\scintilla5.net.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

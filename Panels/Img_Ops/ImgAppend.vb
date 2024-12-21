@@ -1,5 +1,7 @@
 ﻿Imports System.Windows.Forms
 Imports System.IO
+Imports Microsoft.Dism
+Imports Microsoft.VisualBasic.ControlChars
 
 Public Class ImgAppend
 
@@ -173,6 +175,7 @@ Public Class ImgAppend
                         Button1.Text = "Browse..."
                         Button2.Text = "Browse..."
                         Button3.Text = "Browse..."
+                        Button4.Text = "Grab from last image"
                         Button5.Text = "Create..."
                         CheckBox1.Text = "Exclude certain files and directories for destination image"
                         CheckBox2.Text = "Append with WIMBoot configuration"
@@ -196,6 +199,7 @@ Public Class ImgAppend
                         Button1.Text = "Examinar..."
                         Button2.Text = "Examinar..."
                         Button3.Text = "Examinar..."
+                        Button4.Text = "Coger de la última imagen"
                         Button5.Text = "Crear..."
                         CheckBox1.Text = "Excluir algunos archivos y directorios para la imagen de destino"
                         CheckBox2.Text = "Anexar con configuración WIMBoot"
@@ -219,6 +223,7 @@ Public Class ImgAppend
                         Button1.Text = "Parcourir..."
                         Button2.Text = "Parcourir..."
                         Button3.Text = "Parcourir..."
+                        Button4.Text = "Dernière image"
                         Button5.Text = "Créer..."
                         CheckBox1.Text = "Exclure certains fichiers et répertoires pour l'image de destination"
                         CheckBox2.Text = "Ajouter la configuration WIMBoot"
@@ -242,6 +247,7 @@ Public Class ImgAppend
                         Button1.Text = "Navegar..."
                         Button2.Text = "Procurar..."
                         Button3.Text = "Procurar..."
+                        Button4.Text = "Última imagem"
                         Button5.Text = "Criar..."
                         CheckBox1.Text = "Excluir determinados ficheiros e directórios para a imagem de destino"
                         CheckBox2.Text = "Anexar com a configuração WIMBoot"
@@ -265,6 +271,7 @@ Public Class ImgAppend
                         Button1.Text = "Sfoglia..."
                         Button2.Text = "Sfoglia..."
                         Button3.Text = "Sfogliare..."
+                        Button4.Text = "Ultima immagine"
                         Button5.Text = "Crea..."
                         CheckBox1.Text = "Escludi determinati file e cartelle per l'immagine di destinazione"
                         CheckBox2.Text = "Aggiungi con la configurazione WIMBoot"
@@ -289,6 +296,7 @@ Public Class ImgAppend
                 Button1.Text = "Browse..."
                 Button2.Text = "Browse..."
                 Button3.Text = "Browse..."
+                Button4.Text = "Grab from last image"
                 Button5.Text = "Create..."
                 CheckBox1.Text = "Exclude certain files and directories for destination image"
                 CheckBox2.Text = "Append with WIMBoot configuration"
@@ -312,6 +320,7 @@ Public Class ImgAppend
                 Button1.Text = "Examinar..."
                 Button2.Text = "Examinar..."
                 Button3.Text = "Examinar..."
+                Button4.Text = "Coger de la última imagen"
                 Button5.Text = "Crear..."
                 CheckBox1.Text = "Excluir algunos archivos y directorios para la imagen de destino"
                 CheckBox2.Text = "Anexar con configuración WIMBoot"
@@ -335,6 +344,7 @@ Public Class ImgAppend
                 Button1.Text = "Parcourir..."
                 Button2.Text = "Parcourir..."
                 Button3.Text = "Parcourir..."
+                Button4.Text = "Dernière image"
                 Button5.Text = "Créer..."
                 CheckBox1.Text = "Exclure certains fichiers et répertoires pour l'image de destination"
                 CheckBox2.Text = "Ajouter la configuration WIMBoot"
@@ -358,6 +368,7 @@ Public Class ImgAppend
                 Button1.Text = "Navegar..."
                 Button2.Text = "Procurar..."
                 Button3.Text = "Procurar..."
+                Button4.Text = "Última imagem"
                 Button5.Text = "Criar..."
                 CheckBox1.Text = "Excluir determinados ficheiros e directórios para a imagem de destino"
                 CheckBox2.Text = "Anexar com a configuração WIMBoot"
@@ -381,6 +392,7 @@ Public Class ImgAppend
                 Button1.Text = "Sfoglia..."
                 Button2.Text = "Sfoglia..."
                 Button3.Text = "Sfogliare..."
+                Button4.Text = "Ultima immagine"
                 Button5.Text = "Crea..."
                 CheckBox1.Text = "Escludi determinati file e cartelle per l'immagine di destinazione"
                 CheckBox2.Text = "Aggiungi con la configurazione WIMBoot"
@@ -474,5 +486,73 @@ Public Class ImgAppend
             TextBox5.Text = WimScriptEditor.ConfigListFile
         End If
         Visible = True
+    End Sub
+
+    Function GetLastImageName() As String
+        Dim imageName As String = ""
+        Try
+            DismApi.Initialize(DismLogLevel.LogErrors)
+            Dim ImageInfoCollection As DismImageInfoCollection = DismApi.GetImageInfo(TextBox2.Text)
+            imageName = ImageInfoCollection.Last.ImageName
+        Catch ex As Exception
+            MsgBox("Could not grab last image name. Error information:" & CrLf & CrLf & ex.ToString(), vbOKOnly + vbCritical, Label1.Text)
+        Finally
+            Try
+                DismApi.Shutdown()
+            Catch ex As Exception
+                ' Don't do anything
+            End Try
+        End Try
+        Return imageName
+    End Function
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        If TextBox2.Text = "" OrElse Not File.Exists(TextBox2.Text) Then Exit Sub
+        If MainForm.MountedImageDetectorBW.IsBusy Then
+            MainForm.MountedImageDetectorBWRestarterTimer.Enabled = False
+            MainForm.MountedImageDetectorBW.CancelAsync()
+            While MainForm.MountedImageDetectorBW.IsBusy
+                Application.DoEvents()
+                Threading.Thread.Sleep(500)
+            End While
+        End If
+        MainForm.WatcherTimer.Enabled = False
+        If MainForm.WatcherBW.IsBusy Then MainForm.WatcherBW.CancelAsync()
+        While MainForm.WatcherBW.IsBusy
+            Application.DoEvents()
+            Threading.Thread.Sleep(100)
+        End While
+        TextBox3.Text = GetLastImageName()
+        Call MainForm.MountedImageDetectorBW.RunWorkerAsync()
+    End Sub
+
+    Private Sub Button4_MouseHover(sender As Object, e As EventArgs) Handles Button4.MouseHover
+        Dim msg As String = ""
+        Select Case MainForm.Language
+            Case 0
+                Select Case My.Computer.Info.InstalledUICulture.ThreeLetterWindowsLanguageName
+                    Case "ENU", "ENG"
+                        msg = "Grab the name of the last index of the target image"
+                    Case "ESN"
+                        msg = "Obtener el nombre del último índice de la imagen de destino"
+                    Case "FRA"
+                        msg = "Obtenir le nom du dernier index de l'image cible"
+                    Case "PTB", "PTG"
+                        msg = "Obter o nome do último índice da imagem de destino"
+                    Case "ITA"
+                        msg = "Ottenere il nome dell'ultimo indice dell'immagine di destinazione"
+                End Select
+            Case 1
+                msg = "Grab the name of the last index of the target image"
+            Case 2
+                msg = "Obtener el nombre del último índice de la imagen de destino"
+            Case 3
+                msg = "Obtenir le nom du dernier index de l'image cible"
+            Case 4
+                msg = "Obter o nome do último índice da imagem de destino"
+            Case 5
+                msg = "Ottenere il nome dell'ultimo indice dell'immagine di destinazione"
+        End Select
+        ToolTip1.SetToolTip(sender, msg)
     End Sub
 End Class

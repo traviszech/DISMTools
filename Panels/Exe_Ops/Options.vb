@@ -183,14 +183,6 @@ Public Class Options
         MainForm.AutoCompleteInfo(2) = CheckBox17.Checked
         MainForm.AutoCompleteInfo(3) = CheckBox18.Checked
         MainForm.AutoCompleteInfo(4) = CheckBox19.Checked
-        MainForm.GoToNewView = CheckBox20.Checked
-        If MainForm.GoToNewView Then
-            MainForm.ProjectView.Visible = True
-            MainForm.SplitPanels.Visible = False
-        Else
-            MainForm.ProjectView.Visible = False
-            MainForm.SplitPanels.Visible = True
-        End If
         MainForm.ColorSchemes = If(RadioButton1.Checked, 0, 1)
         Select Case MainForm.ColorSchemes
             Case 0
@@ -410,7 +402,6 @@ Public Class Options
                         CheckBox17.Text = "Installed AppX packages"
                         CheckBox18.Text = "Capabilities"
                         CheckBox19.Text = "Installed drivers"
-                        CheckBox20.Text = "Use the new project view design"
                         CheckBox22.Text = "Automatically clean up mount points (launches a separate process)"
                         DismOFD.Title = "Specify the DISM executable to use"
                         Label59.Text = "Log customization"
@@ -511,7 +502,6 @@ Public Class Options
                         CheckBox17.Text = "Paquetes AppX instalados"
                         CheckBox18.Text = "Funcionalidades"
                         CheckBox19.Text = "Controladores instalados"
-                        CheckBox20.Text = "Utilizar el nuevo diseño de la vista de proyectos"
                         CheckBox22.Text = "Limpiar puntos de montaje automáticamente (inicia un proceso separado)"
                         DismOFD.Title = "Especifique el ejecutable de DISM a usar"
                         Label59.Text = "Personalización del registro"
@@ -612,7 +602,6 @@ Public Class Options
                         CheckBox17.Text = "Paquets AppX installés"
                         CheckBox18.Text = "Capacités"
                         CheckBox19.Text = "Pilotes installés"
-                        CheckBox20.Text = "Utiliser le nouveau design de la vue du projet"
                         CheckBox22.Text = "Nettoyer automatiquement les points de montage (lance un processus séparé)"
                         DismOFD.Title = "Spécifier l'exécutable DISM à utiliser"
                         Label59.Text = "Personnalisation du journal"
@@ -713,7 +702,6 @@ Public Class Options
                         CheckBox17.Text = "Pacotes AppX instalados"
                         CheckBox18.Text = " Capacidades"
                         CheckBox19.Text = "Controladores instalados"
-                        CheckBox20.Text = "Utilizar o novo design da vista de projeto"
                         CheckBox22.Text = "Limpar automaticamente os pontos de montagem (inicia um processo separado)"
                         DismOFD.Title = "Especificar o executável DISM a utilizar"
                         Label59.Text = "Personalização do registo"
@@ -814,7 +802,6 @@ Public Class Options
                         CheckBox17.Text = "Pacchetti AppX installati"
                         CheckBox18.Text = "Capacità"
                         CheckBox19.Text = "Driver installati"
-                        CheckBox20.Text = "Usa il nuovo design di visualizzazione del progetto"
                         CheckBox22.Text = "Pulisci automaticamente i punti di montaggio (lancia un processo separato)"
                         DismOFD.Title = "Specificare l'eseguibile DISM da utilizzare"
                         Label59.Text = "Personalizzazione dei registri"
@@ -916,7 +903,6 @@ Public Class Options
                 CheckBox17.Text = "Installed AppX packages"
                 CheckBox18.Text = "Capabilities"
                 CheckBox19.Text = "Installed drivers"
-                CheckBox20.Text = "Use the new project view design"
                 CheckBox22.Text = "Automatically clean up mount points (launches a separate process)"
                 DismOFD.Title = "Specify the DISM executable to use"
                 Label59.Text = "Log customization"
@@ -1017,7 +1003,6 @@ Public Class Options
                 CheckBox17.Text = "Paquetes AppX instalados"
                 CheckBox18.Text = "Funcionalidades"
                 CheckBox19.Text = "Controladores instalados"
-                CheckBox20.Text = "Utilizar el nuevo diseño de la vista de proyectos"
                 CheckBox22.Text = "Limpiar puntos de montaje automáticamente (inicia un proceso separado)"
                 DismOFD.Title = "Especifique el ejecutable de DISM a usar"
                 Label59.Text = "Personalización del registro"
@@ -1118,7 +1103,6 @@ Public Class Options
                 CheckBox17.Text = "Paquets AppX installés"
                 CheckBox18.Text = "Capacités"
                 CheckBox19.Text = "Pilotes installés"
-                CheckBox20.Text = "Utiliser le nouveau design de la vue du projet"
                 CheckBox22.Text = "Nettoyer automatiquement les points de montage (lance un processus séparé)"
                 DismOFD.Title = "Spécifier l'exécutable DISM à utiliser"
                 Label59.Text = "Personnalisation du journal"
@@ -1219,7 +1203,6 @@ Public Class Options
                 CheckBox17.Text = "Pacotes AppX instalados"
                 CheckBox18.Text = " Capacidades"
                 CheckBox19.Text = "Controladores instalados"
-                CheckBox20.Text = "Utilizar o novo design da vista de projeto"
                 CheckBox22.Text = "Limpar automaticamente os pontos de montagem (inicia um processo separado)"
                 DismOFD.Title = "Especificar o executável DISM a utilizar"
                 Label59.Text = "Personalização do registo"
@@ -1320,7 +1303,6 @@ Public Class Options
                 CheckBox17.Text = "Pacchetti AppX installati"
                 CheckBox18.Text = "Capacità"
                 CheckBox19.Text = "Driver installati"
-                CheckBox20.Text = "Usa il nuovo design di visualizzazione del progetto"
                 CheckBox22.Text = "Pulisci automaticamente i punti di montaggio (lancia un processo separato)"
                 DismOFD.Title = "Specificare l'eseguibile DISM da utilizzare"
                 Label59.Text = "Personalizzazione dei registri"
@@ -1757,7 +1739,6 @@ Public Class Options
         CheckBox17.Checked = MainForm.AutoCompleteInfo(2)
         CheckBox18.Checked = MainForm.AutoCompleteInfo(3)
         CheckBox19.Checked = MainForm.AutoCompleteInfo(4)
-        CheckBox20.Checked = MainForm.GoToNewView
         CheckBox22.Checked = MainForm.AutoCleanMounts
         Select Case MainForm.ColorSchemes
             Case 0
@@ -2496,6 +2477,7 @@ Public Class Options
                 Select Case My.Computer.Info.InstalledUICulture.ThreeLetterWindowsLanguageName
                     Case "ENU", "ENG"
                         If Button8.Text = "Stop" Then
+                            MainForm.MountedImageDetectorBWRestarterTimer.Enabled = False
                             MainForm.MountedImageDetectorBW.CancelAsync()
                         ElseIf Button8.Text = "Start" Then
                             Call MainForm.MountedImageDetectorBW.RunWorkerAsync()
@@ -2504,6 +2486,7 @@ Public Class Options
                         Button8.Text = If(MainForm.MountedImageDetectorBW.IsBusy, "Stop", "Start")
                     Case "ESN"
                         If Button8.Text = "Detener" Then
+                            MainForm.MountedImageDetectorBWRestarterTimer.Enabled = False
                             MainForm.MountedImageDetectorBW.CancelAsync()
                         ElseIf Button8.Text = "Iniciar" Then
                             Call MainForm.MountedImageDetectorBW.RunWorkerAsync()
@@ -2512,6 +2495,7 @@ Public Class Options
                         Button8.Text = If(MainForm.MountedImageDetectorBW.IsBusy, "Detener", "Iniciar")
                     Case "FRA"
                         If Button8.Text = "Arrêter" Then
+                            MainForm.MountedImageDetectorBWRestarterTimer.Enabled = False
                             MainForm.MountedImageDetectorBW.CancelAsync()
                         ElseIf Button8.Text = "Démarrer" Then
                             Call MainForm.MountedImageDetectorBW.RunWorkerAsync()
@@ -2520,6 +2504,7 @@ Public Class Options
                         Button8.Text = If(MainForm.MountedImageDetectorBW.IsBusy, "Arrêter", "Démarrer")
                     Case "PTB", "PTG"
                         If Button8.Text = "Parar" Then
+                            MainForm.MountedImageDetectorBWRestarterTimer.Enabled = False
                             MainForm.MountedImageDetectorBW.CancelAsync()
                         ElseIf Button8.Text = "Iniciar" Then
                             Call MainForm.MountedImageDetectorBW.RunWorkerAsync()
@@ -2528,6 +2513,7 @@ Public Class Options
                         Button8.Text = If(MainForm.MountedImageDetectorBW.IsBusy, "Parar", "Iniciar")
                     Case "ITA"
                         If Button8.Text = "Arresto" Then
+                            MainForm.MountedImageDetectorBWRestarterTimer.Enabled = False
                             MainForm.MountedImageDetectorBW.CancelAsync()
                         ElseIf Button8.Text = "Avvio" Then
                             Call MainForm.MountedImageDetectorBW.RunWorkerAsync()
@@ -2537,6 +2523,7 @@ Public Class Options
                 End Select
             Case 1
                 If Button8.Text = "Stop" Then
+                    MainForm.MountedImageDetectorBWRestarterTimer.Enabled = False
                     MainForm.MountedImageDetectorBW.CancelAsync()
                 ElseIf Button8.Text = "Start" Then
                     Call MainForm.MountedImageDetectorBW.RunWorkerAsync()
@@ -2545,6 +2532,7 @@ Public Class Options
                 Button8.Text = If(MainForm.MountedImageDetectorBW.IsBusy, "Stop", "Start")
             Case 2
                 If Button8.Text = "Detener" Then
+                    MainForm.MountedImageDetectorBWRestarterTimer.Enabled = False
                     MainForm.MountedImageDetectorBW.CancelAsync()
                 ElseIf Button8.Text = "Iniciar" Then
                     Call MainForm.MountedImageDetectorBW.RunWorkerAsync()
@@ -2553,6 +2541,7 @@ Public Class Options
                 Button8.Text = If(MainForm.MountedImageDetectorBW.IsBusy, "Detener", "Iniciar")
             Case 3
                 If Button8.Text = "Arrêter" Then
+                    MainForm.MountedImageDetectorBWRestarterTimer.Enabled = False
                     MainForm.MountedImageDetectorBW.CancelAsync()
                 ElseIf Button8.Text = "Démarrer" Then
                     Call MainForm.MountedImageDetectorBW.RunWorkerAsync()
@@ -2561,6 +2550,7 @@ Public Class Options
                 Button8.Text = If(MainForm.MountedImageDetectorBW.IsBusy, "Arrêter", "Démarrer")
             Case 4
                 If Button8.Text = "Parar" Then
+                    MainForm.MountedImageDetectorBWRestarterTimer.Enabled = False
                     MainForm.MountedImageDetectorBW.CancelAsync()
                 ElseIf Button8.Text = "Iniciar" Then
                     Call MainForm.MountedImageDetectorBW.RunWorkerAsync()
@@ -2569,6 +2559,7 @@ Public Class Options
                 Button8.Text = If(MainForm.MountedImageDetectorBW.IsBusy, "Parar", "Iniciar")
             Case 5
                 If Button8.Text = "Arresto" Then
+                    MainForm.MountedImageDetectorBWRestarterTimer.Enabled = False
                     MainForm.MountedImageDetectorBW.CancelAsync()
                 ElseIf Button8.Text = "Avvio" Then
                     Call MainForm.MountedImageDetectorBW.RunWorkerAsync()

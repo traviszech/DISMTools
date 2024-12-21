@@ -1,4 +1,4 @@
-Imports Microsoft.Win32
+﻿Imports Microsoft.Win32
 Imports Microsoft.VisualBasic.ControlChars
 Imports System.Management
 Imports System.IO
@@ -14,6 +14,9 @@ Namespace My
     ' StartupNextInstance: se desencadena cuando se inicia una aplicación de instancia única y la aplicación ya está activa. 
     ' NetworkAvailabilityChanged: se desencadena cuando la conexión de red está conectada o desconectada.
     Partial Friend Class MyApplication
+
+        Private lastThemeChangeTime As DateTime = DateTime.Now
+        Private debounceInterval As TimeSpan = TimeSpan.FromSeconds(2)
 
         Private Sub Start(sender As Object, e As EventArgs) Handles Me.Startup
             AddHandler Microsoft.Win32.SystemEvents.UserPreferenceChanged, AddressOf SysEvts_UserPreferenceChanged
@@ -122,6 +125,13 @@ Namespace My
             ' It hasn't caused any freezes for me yet, but I may be proven wrong.
             If DISMTools.MainForm.MountedImageDetectorBW.IsBusy Then
                 DISMTools.MainForm.MountedImageDetectorBW.CancelAsync()
+            End If
+            If e.Category = UserPreferenceCategory.General And DISMTools.MainForm.ColorMode = 0 Then
+                Dim currentTime As DateTime = DateTime.Now
+                If currentTime - lastThemeChangeTime > debounceInterval Then
+                    DISMTools.MainForm.ChangePrgColors(0)
+                    lastThemeChangeTime = currentTime
+                End If
             End If
             Try
                 Threading.Thread.Sleep(1000)
